@@ -18,7 +18,7 @@ export class PaymentMasterComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private activeRoute: ActivatedRoute,
     private service: AdministrationService) { }
-
+//Payment Type Code
   ngOnInit() {
     this.activeRoute.queryParams
       .subscribe(x => {
