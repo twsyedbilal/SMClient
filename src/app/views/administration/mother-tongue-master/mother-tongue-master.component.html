@@ -1,0 +1,33 @@
+<div class="mat-card">
+  <mat-toolbar color='primary'><span style="color:#fff">Mother Tongue Master</span></mat-toolbar>
+  <form [formGroup]='mTForm' (ngSubmit)='submit()'>
+
+    <mat-form-field class="example-full-width formFieldAlign">
+      <input matInput formControlName='name' placeholder="MotherTongue Name">
+      
+      <mat-error *ngIf='mTForm.get("name").hasError("required")'>
+        Mother Tongue Name is <strong>required</strong></mat-error>
+      
+        <mat-error *ngIf='!mTForm.get("name").hasError("required")
+      && mTForm.get("name").hasError("pattern")'>
+        Mother Tongue <strong>only Charecters allow</strong></mat-error>
+    </mat-form-field>
+
+<mat-form-field class="example-full-width formFieldAlign">
+      <input matInput formControlName='code' placeholder="MotherTongue Code">
+
+      <mat-error *ngIf='mTForm.get("code").hasError("required")'>
+        Mother Tongue Code is <strong>required</strong></mat-error>
+
+        <mat-error *ngIf='!mTForm.get("code").hasError("required")
+      && mTForm.get("code").hasError("pattern")'>
+        Mother Tongue Code <strong>only Numbers allow</strong>
+      </mat-error>
+    </mat-form-field>
+    
+    <div>
+      <button mat-raised-button type="submit" class="submit-btn" color="primary"><span
+          class='submit-title'>Submit</span></button>
+    </div>
+  </form>
+</div>

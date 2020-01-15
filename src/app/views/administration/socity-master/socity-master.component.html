@@ -1,0 +1,27 @@
+<div class="mat-card">
+  <mat-toolbar color='primary'><span style="color:#fff">Society Master</span></mat-toolbar>
+    <form (ngSubmit)='societyForm' [formGroup]='societyForm'>
+    <mat-form-field class="example-full-width formFieldAlign">
+      <input matInput formControlName='name' placeholder="Society Name">
+      <mat-error *ngIf='societyForm.get("name").hasError("required")'>
+        Society Name is <strong>required</strong></mat-error>
+     <mat-error *ngIf='!societyForm.get("name").hasError("required")
+     && societyForm.get("name").hasError("pattern")'>
+     society Name  <strong>only Charecters allow</strong></mat-error>
+    </mat-form-field>
+  
+    <mat-form-field  class="example-full-width formFieldAlign">
+      <input matInput formControlName='code'  placeholder="Society Code">
+      <mat-error *ngIf='societyForm.get("name").hasError("required")'>
+        Society Code is <strong>required</strong></mat-error>
+     <mat-error *ngIf='!societyForm.get("name").hasError("required")
+     && societyForm.get("name").hasError("pattern")'>
+     society Code  <strong>only Number  allow</strong></mat-error>
+    </mat-form-field>
+  
+    <div>
+      <button mat-raised-button  type="submit" class="submit-btn" color="primary"><span class='submit-title'>Submit</span></button>
+      </div>  
+    </form>
+  </div>
+  

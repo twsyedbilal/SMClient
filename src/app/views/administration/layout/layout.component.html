@@ -1,0 +1,35 @@
+<div class="container">
+  <mat-drawer-container >
+  <mat-drawer style="width:20%" mode="side" opened>
+    <mat-list>
+      <mat-list-item class="item"routerLink='../master-layout/school'>School </mat-list-item>
+      <mat-divider></mat-divider> 
+      <mat-list-item class="item"routerLink='../master-layout/schoolType'>School Type </mat-list-item>
+      <mat-divider></mat-divider> 
+      <mat-list-item class="item" routerLink='../master-layout/payment'>Payement Type </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item class="item" routerLink='../master-layout/class'>Class</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item class="item" routerLink='../master-layout/book'>Book </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item class="item" routerLink='../master-layout/religion'>Religion</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item class="item" routerLink='../master-layout/caste'>Caste</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item class="item" routerLink='../master-layout/mothertongue'>MotherTongue</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item class="item" routerLink='../master-layout/branch'>Branch</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item class="item" routerLink='../master-layout/occupation'>Occupation</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item class="item" routerLink='../master-layout/society'>Society</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item class="item" routerLink='../master-layout/nationality'>Nationality</mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+    </mat-drawer>
+  <mat-drawer-content>
+            <router-outlet ></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+</div>

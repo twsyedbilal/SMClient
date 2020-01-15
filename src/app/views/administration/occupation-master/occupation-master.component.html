@@ -1,0 +1,28 @@
+<div class="mat-card">
+  <mat-toolbar color='primary'><span style="color:#fff">Occupation Master</span></mat-toolbar>
+    <form [formGroup]='occupationForm' (ngSubmit)='submit()'>
+    <mat-form-field class="example-full-width formFieldAlign">
+      <input matInput formControlName='name' placeholder="Occupation Name">
+      <mat-error *ngIf='occupationForm.get("name").hasError("required")'>
+         Occupation is <strong>required</strong></mat-error>
+      <mat-error *ngIf='!occupationForm.get("name").hasError("required")
+      && occupationForm.get("name").hasError("pattern")'>
+        Occupation  <strong>only Charecters allow</strong></mat-error>
+    
+    </mat-form-field>
+  
+    <mat-form-field  class="example-full-width formFieldAlign">
+      <input matInput formControlName='code' placeholder="Occupation Code">
+      <mat-error *ngIf='occupationForm.get("code").hasError("required")'>
+        Occupation is <strong>required</strong></mat-error>
+     <mat-error *ngIf='!occupationForm.get("code").hasError("required")
+     && occupationForm.get("code").hasError("pattern")'>
+       Occupation Code <strong>only Numbers allow</strong></mat-error>
+    </mat-form-field>
+  
+    <div>
+      <button mat-raised-button  type="submit" class="submit-btn" color="primary"><span class='submit-title'>Submit</span></button>
+      </div>  
+    </form>
+  </div>
+  

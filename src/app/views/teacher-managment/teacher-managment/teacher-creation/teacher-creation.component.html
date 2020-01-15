@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-toolbar class="mat-toolbar"><span>Create User</span></mat-toolbar>
+<div>
+  <mat-card>
+<form [formGroup]='userForm' (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width formFieldAlign">
+    <input matInput formControlName='name' placeholder="Name">
+  </mat-form-field>
+
+  
+  <mat-form-field class="example-full-width formFieldAlign">
+    <mat-label>Roles</mat-label>
+    <mat-select formControlName='roles' >
+      <mat-option [value]='x' *ngFor='let x of roles'>
+       {{x}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  
+  <mat-form-field class="example-full-width formFieldAlign">
+    <input matInput formControlName='userName' placeholder="User Name">
+  </mat-form-field>
+
+  <mat-form-field  class="example-full-width formFieldAlign">
+    <input matInput formControlName='password' placeholder="Password">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width form-Field-email">
+    <input matInput formControlName='emailid' placeholder="Email ID">
+  </mat-form-field>
+
+  <div>
+  <button mat-raised-button  type="submit" class="submit-btn" color="primary"><span class='submit-title'>Submit</span></button>
+  </div>  
+
+</form>
+</mat-card>
+

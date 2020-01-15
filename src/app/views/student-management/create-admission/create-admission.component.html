@@ -1,0 +1,235 @@
+<mat-card>
+ <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button>-->
+<div class="flex-container">
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <mat-card>
+      <form>
+    <ng-template matStepLabel>Student Details</ng-template>
+      <div fxLayout="row">
+      
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="SurName" >
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Students Name">
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Fathers Name">
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Mothers Name">
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Guardians Name" >
+        </mat-form-field>
+      
+          <mat-radio-group class="example-full-width formFieldAlign" >
+            <mat-radio-button value="1">Female</mat-radio-button>
+
+            <mat-radio-button value="2" style="margin-left:2%">Male</mat-radio-button>
+          </mat-radio-group>
+        
+          <mat-form-field class="example-full-width formFieldAlign">
+            <input matInput [matDatepicker]="picker" placeholder="Date of Birth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          
+  
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Date Of Birth In Words">
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="placeOfBirth">
+        </mat-form-field>
+  
+       
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="UID No" >
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="ID No">
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Student Reg No" >
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Year">
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Date">
+        </mat-form-field>
+  
+        
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Income">
+        </mat-form-field>
+
+        
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Contact No">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="status">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="liveStatus">
+        </mat-form-field>
+        
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Identity By Mark Or AadharNo;">
+        </mat-form-field>
+
+        
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="ClassName">
+        </mat-form-field>
+
+        
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Code">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Fees">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Religion Name">
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Religion Code">
+        </mat-form-field>
+
+        
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Caste Name">
+        </mat-form-field>
+        
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Caste Code">
+        </mat-form-field>
+
+        
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="SubCaste Name">
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="SubCaste Code">
+        </mat-form-field>
+     
+         
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Occupation Name">
+        </mat-form-field>
+     
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Occupation Code">
+        </mat-form-field>
+     
+
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="society Name">
+        </mat-form-field>
+     
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="society Code">
+        </mat-form-field>
+     
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Nationality">
+        </mat-form-field>
+     
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Code">
+        </mat-form-field>
+     
+        
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Mother Name">
+        </mat-form-field>
+     
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Code">
+        </mat-form-field>
+     
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Branch Name">
+        </mat-form-field>
+     
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput placeholder="Branch Code">
+        </mat-form-field>
+     
+        <div>
+      </div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-card>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form >
+      <ng-template matStepLabel>Address Details</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address"  required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form >
+      <ng-template matStepLabel>School Details</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address"  required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+ 
+  <mat-step [stepControl]="secondFormGroup">
+    <form >
+      <ng-template matStepLabel>Fee Details</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address"  required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
+</div>
+</mat-card>

@@ -1,0 +1,20 @@
+// same as _signup-4.scss
+.signIn-background{
+  background-image: url(assets/images/signin-background.jpg);
+  background-position: right bottom, left top;
+  background-repeat: no-repeat, repeat;
+  background-size:cover;
+  position: relative;
+    height: 100vh;
+
+
+}
+.signIn-background:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+}

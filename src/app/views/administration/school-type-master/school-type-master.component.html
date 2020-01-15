@@ -1,0 +1,33 @@
+<div class="mat-card">
+  <mat-toolbar *ngIf='id ==undefined' color='primary'><span style="color:#fff">School Type Master</span> </mat-toolbar>
+  <mat-toolbar *ngIf='id !=undefined' color='primary'><span style="color:#fff">Update School Type Master</span> </mat-toolbar >
+
+  <form [formGroup]='schoolType' (ngSubmit)='submitForm()' *ngIf='schoolType !=null'>
+
+    <mat-form-field class="example-full-width formFieldAlign">
+      <input matInput formControlName='schoolTypeName' placeholder="School Type Name">
+      <mat-error *ngIf='schoolType.get("schoolTypeName").hasError("required")'>School Type Name is <strong>
+          required</strong></mat-error>
+      <mat-error *ngIf="schoolType.get('schoolTypeName').hasError('pattern')">
+        School Type Name <strong>only Charecters allow</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width formFieldAlign">
+      <input matInput formControlName='schoolCode' placeholder="School Type Code">
+      <mat-error *ngIf='schoolType.get("schoolCode").hasError("required")'>school Code Name is <strong>
+        required</strong></mat-error>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+    <mat-error *ngIf="schoolType.get('schoolCode').hasError('pattern')">
+      school Code  <strong>only Numbers allow</strong>
+    </mat-error>
+  
+    </mat-form-field>
+    <div>
+      <button *ngIf='id ==undefined' mat-raised-button type="submit" class="submit-btn" color="primary"><span
+          class='submit-title'>Submit</span></button>
+    
+    <button *ngIf='id !=undefined' mat-raised-button type="submit" class="submit-btn" color="primary"><span
+      class='submit-title'>Update</span></button>
+  </div>
+  </form>
+</div>
