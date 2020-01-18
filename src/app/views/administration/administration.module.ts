@@ -29,6 +29,17 @@ import { SchoolTypeComponent } from './admin-table/school-type/school-type.compo
 import { TableComponent } from './admin-table/table/table.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { PaymentTableComponent } from './admin-table/payment-table/payment-table.component';
+import { SchoolTableComponent } from './admin-table/school-table/school-table.component';
+import { ClassTableComponent } from './admin-table/class-table/class-table.component';
+import { BookTableComponent } from './admin-table/book-table/book-table.component';
+import { ReligionTableComponent } from './admin-table/religion-table/religion-table.component';
+import { CasteTableComponent } from './admin-table/caste-table/caste-table.component';
+import { MotherTongueTableComponent } from './admin-table/mother-tongue-table/mother-tongue-table.component';
+import { BranchTableComponent } from './admin-table/branch-table/branch-table.component';
+import { OccupationTableComponent } from './admin-table/occupation-table/occupation-table.component';
+import { SocietyTableComponent } from './admin-table/society-table/society-table.component';
+import { NationalityTableComponent } from './admin-table/nationality-table/nationality-table.component';
+import { SubCasteTableComponent } from './admin-table/sub-caste-table/sub-caste-table.component';
 
 @NgModule({
   declarations: [LayoutComponent, LanguageMasterComponent,
@@ -36,7 +47,7 @@ import { PaymentTableComponent } from './admin-table/payment-table/payment-table
       OccupationMasterComponent, SocityMasterComponent,
       NationalityMasterComponent, MotherTongueMasterComponent, 
       BranchMasterComponent, SchoolMasterComponent, SchoolTypeMasterComponent,
-       PaymentMasterComponent, ClassMasterComponent, BookMasterComponent,TableLayoutComponent, StudentTableComponent, SchoolTypeComponent, TableComponent, PaymentTableComponent],
+       PaymentMasterComponent, ClassMasterComponent, BookMasterComponent,TableLayoutComponent, StudentTableComponent, SchoolTypeComponent, TableComponent, PaymentTableComponent, SchoolTableComponent, ClassTableComponent, BookTableComponent, ReligionTableComponent, CasteTableComponent, MotherTongueTableComponent, BranchTableComponent, OccupationTableComponent, SocietyTableComponent, NationalityTableComponent, SubCasteTableComponent],
   imports: [
     MatSidenavModule,
     MatCardModule,

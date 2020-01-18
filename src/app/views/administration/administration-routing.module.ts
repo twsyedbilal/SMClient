@@ -19,6 +19,16 @@ import { TableLayoutComponent } from './admin-table/table-layout/table-layout.co
 import { StudentTableComponent } from './admin-table/student-table/student-table.component';
 import { SchoolTypeComponent } from './admin-table/school-type/school-type.component';
 import { PaymentTableComponent } from './admin-table/payment-table/payment-table.component';
+import { SchoolTableComponent } from './admin-table/school-table/school-table.component';
+import { ClassTableComponent } from './admin-table/class-table/class-table.component';
+import { BookTableComponent } from './admin-table/book-table/book-table.component';
+import { ReligionTableComponent } from './admin-table/religion-table/religion-table.component';
+import { CasteTableComponent } from './admin-table/caste-table/caste-table.component';
+import { MotherTongueTableComponent } from './admin-table/mother-tongue-table/mother-tongue-table.component';
+import { BranchTableComponent } from './admin-table/branch-table/branch-table.component';
+import { OccupationTableComponent } from './admin-table/occupation-table/occupation-table.component';
+import { SocietyTableComponent } from './admin-table/society-table/society-table.component';
+import { NationalityTableComponent } from './admin-table/nationality-table/nationality-table.component';
 
 const routes: Routes = [
   {
@@ -94,13 +104,53 @@ const routes: Routes = [
         pathMatch:'full'
       },
       {
+          path:'school-table',
+          component:SchoolTableComponent
+      },
+      {
         path:'schoolType-list',
         component: SchoolTypeComponent
       },
       {
         path:'paymentType-list',
         component:PaymentTableComponent
-      }
+      },
+      {
+        path:'class-list',
+        component:ClassTableComponent
+      },
+      {
+        path:'book-list',
+        component:BookTableComponent
+      },
+      {
+        path:'religion-list',
+        component:ReligionTableComponent
+      },
+      {
+        path:'caste-list',
+        component:CasteTableComponent
+      },
+      {
+        path:'mt-list',
+        component:MotherTongueTableComponent
+      },
+      {
+        path:'branch-list',
+        component:BranchTableComponent
+      },
+      {
+        path:'occupation-list',
+        component:OccupationTableComponent
+      },
+      {
+        path:'society-list',
+        component:SocietyTableComponent
+      },
+      {
+        path:'nationality-list',
+        component:NationalityTableComponent
+      },
     ],
   }
 ];

@@ -56,7 +56,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   entryComponents: [
     SnackBarMassageComponent
   ],
-  declarations: [AppComponent, SnackBarMassageComponent],
+  declarations: [AppComponent, SnackBarMassageComponent,],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
     AuthService,AuthGuard,NavigationService,  
