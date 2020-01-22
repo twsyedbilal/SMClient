@@ -39,7 +39,7 @@ export class ReligionTableComponent implements OnInit {
 
   delete(id:number){
     console.log(id);
-    this.service.getClassDeletedById(id)
+    this.service.deleteReligionById(id)
     .subscribe(res=>{
       console.log(res);
         if(res.code==200){

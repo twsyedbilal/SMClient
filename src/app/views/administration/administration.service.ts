@@ -57,7 +57,7 @@ export class AdministrationService {
     return this.http.get<any>(environment.userApi+'/religion/findallreligion')
   }
 
-  public deleterReligionById(id:number): Observable<any> {
+  public deleteReligionById(id:number): Observable<any> {
     return this.http.get<any>(environment.userApi + '/religion/deleteid/'+id)
   }
 
