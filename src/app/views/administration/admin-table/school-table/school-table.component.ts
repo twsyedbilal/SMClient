@@ -9,7 +9,7 @@ import { SnackBarMassageComponent } from 'app/views/snack-bar-massage/snack-bar-
   styleUrls: ['./school-table.component.scss']
 })
 export class SchoolTableComponent implements OnInit {
-  displayedColumns: string[] = ['srNo', 'name', 'code','edit','delete'];
+  displayedColumns: string[] = ['srNo', 'name', 'code','address','edit','delete'];
   dataSource:any;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;

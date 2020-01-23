@@ -40,6 +40,7 @@ import { OccupationTableComponent } from './admin-table/occupation-table/occupat
 import { SocietyTableComponent } from './admin-table/society-table/society-table.component';
 import { NationalityTableComponent } from './admin-table/nationality-table/nationality-table.component';
 import { SubCasteTableComponent } from './admin-table/sub-caste-table/sub-caste-table.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [LayoutComponent, LanguageMasterComponent,
@@ -52,6 +53,7 @@ import { SubCasteTableComponent } from './admin-table/sub-caste-table/sub-caste-
     MatSidenavModule,
     MatCardModule,
     FormsModule,
+    MatTabsModule,
     MatListModule,
     MatSnackBarModule,
     MatTooltipModule,
