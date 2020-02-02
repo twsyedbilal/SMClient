@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <mat-tab-group (selectedTabChange)="tabChanged($event)">
   <mat-tab label="Master">  
     
@@ -37,34 +36,3 @@
     </div>
     </mat-tab>
 </mat-tab-group>
-=======
-    <div class="mat-card">
-      <mat-toolbar color='primary'><span style="color:#fff">Religion Master</span></mat-toolbar>
-      <form [formGroup]='religionForm' (ngSubmit)='submit()'>
-    
-        <mat-form-field class="example-full-width formFieldAlign">
-          <input matInput formControlName='religionName' placeholder="Religion Name">
-          <mat-error *ngIf='religionForm.get("religionName").hasError("required")'>religion Name is
-            <strong>required</strong>
-          </mat-error>
-          <mat-error *ngIf='!religionForm.get("religionName").hasError("required") &&
-          religionForm.get("religionName").hasError("pattern")'>religion Name <strong>only Charecters allow</strong>
-          </mat-error>
-        </mat-form-field>
-    
-        <mat-form-field class="example-full-width formFieldAlign">
-          <input matInput formControlName='code' placeholder="Religion Code">
-          <mat-error *ngIf='religionForm.get("code").hasError("required")'>religion Code is <strong>required</strong>
-          </mat-error>
-          <mat-error *ngIf='!religionForm.get("code").hasError("required") &&
-          religionForm.get("code").hasError("pattern")'>religion Code <strong>only Number allow</strong></mat-error>
-        </mat-form-field>
-        
-        <div>
-          <button mat-raised-button type="submit" class="submit-btn" color="primary"><span
-              class='submit-title'>Submit</span></button>
-        </div>
-      </form>
-    </div> 
- 
->>>>>>> 9f702af8053372c1b4a056d2b934f5118f16061c

@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 
 <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
   <mat-tab label="Master"> 
     <div class="mat-card">
   <mat-toolbar color='primary' *ngIf='id ==undefined'><span style="color:#fff">Payment Master</span></mat-toolbar>
-  <mat-toolbar color='primary' *ngIf='id !=undefined'><span style="color:#fff">Update Payment Master</span></mat-toolbar>
 
   <form [formGroup]='paymentTypeForm' #formDirective="ngForm" (ngSubmit)='submitPaymentType(paymentTypeForm,formDirective)' *ngIf='paymentTypeForm !=null'>
     <mat-form-field class="example-full-width formFieldAlign">
@@ -43,40 +41,3 @@
 </div>
 </mat-tab>
 </mat-tab-group>
-=======
-   <div class="mat-card">
-      <mat-toolbar color='primary' *ngIf='id ==undefined'><span style="color:#fff">Payment Master</span></mat-toolbar>
-      <mat-toolbar color='primary' *ngIf='id !=undefined'><span style="color:#fff">Update Payment Master</span></mat-toolbar>
-    
-      <form [formGroup]='paymentTypeForm' (ngSubmit)='submitPaymentType()' *ngIf='paymentTypeForm !=null'>
-        <mat-form-field class="example-full-width formFieldAlign">
-          <input matInput formControlName='paymentType' placeholder="Payment Type">
-    
-          <mat-error *ngIf='paymentTypeForm.get("paymentType").hasError("required")'>Payment Type
-            <strong>Reqired</strong></mat-error>
-    
-          <mat-error *ngIf='!paymentTypeForm.get("paymentType").hasError("required")
-             &&  paymentTypeForm.get("paymentType").hasError("pattern")'>
-            Payemnt Type <strong>only Charecters allow</strong></mat-error>
-        </mat-form-field>
-    
-        <mat-form-field class="example-full-width formFieldAlign">
-          <input matInput formControlName='code' placeholder="Payment Code">
-          <mat-error *ngIf='paymentTypeForm.get("code").hasError("required")'>
-            Payment Type<strong>Reqired</strong></mat-error>
-    
-          <mat-error *ngIf='!paymentTypeForm.get("code").hasError("required")
-            &&  paymentTypeForm.get("code").hasError("pattern")'>
-            Payemnt Code <strong>only Number allow</strong>
-          </mat-error>
-        </mat-form-field>
-    
-        <div>
-          <button mat-raised-button type="submit" class="submit-btn" color="primary">
-            <span class='submit-title'>Submit</span>
-          </button>
-        </div>
-      </form>
-    </div>
- 
->>>>>>> 9f702af8053372c1b4a056d2b934f5118f16061c
