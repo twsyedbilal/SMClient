@@ -1,17 +1,39 @@
+<mat-tab-group (selectedTabChange)="tabChanged($event)">
+  <mat-tab label="Master"> 
+    
 <div class="mat-card">
   <mat-toolbar color='primary'><span style="color:#fff">Nationality Master</span></mat-toolbar>
-    <form>
+    <form [formGroup]='nationalityForm' #formDirective="ngForm" (ngSubmit)='submit(nationalityForm,formDirective)'>
     <mat-form-field class="example-full-width formFieldAlign">
-      <input matInput  placeholder="Nationality Name">
+      <input matInput formControlName='name'  placeholder="Nationality Name">
+      <mat-error *ngIf='nationalityForm.get("name").hasError("required")'>
+       Nationality Name is <strong>required</strong></mat-error>
+      
+        <mat-error *ngIf='!nationalityForm.get("name").hasError("required")
+      && nationalityForm.get("name").hasError("pattern")'>
+      Nationality Name <strong>only Charecters allow</strong></mat-error>
+   
     </mat-form-field>
   
     <mat-form-field  class="example-full-width formFieldAlign">
-      <input matInput  placeholder="Nationality Code">
-    </mat-form-field>
+      <input matInput formControlName='code'  placeholder="Nationality Code">
+      <mat-error *ngIf='nationalityForm.get("name").hasError("required")'>
+        Nationality Code is <strong>required</strong></mat-error>
+       
+         <mat-error *ngIf='!nationalityForm.get("name").hasError("required")
+       && nationalityForm.get("name").hasError("pattern")'>
+       Nationality Code <strong>only Number allow</strong></mat-error>
+   </mat-form-field>
   
     <div>
       <button mat-raised-button  type="submit" class="submit-btn" color="primary"><span class='submit-title'>Submit</span></button>
       </div>  
     </form>
   </div>
-  
+  </mat-tab>
+  <mat-tab label="Nationality List"> 
+    <div *ngIf='tableshow==true'>
+      <app-nationality-table></app-nationality-table>
+    </div>
+  </mat-tab>
+</mat-tab-group>

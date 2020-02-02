@@ -15,6 +15,7 @@ import { map } from 'rxjs/operators';
 export class AdministrationService {
 
   constructor(private http: HttpClient) { }
+ 
   //School Calls
   public school(data: SchoolDto): Observable<any> {
     return this.http.post<any>(environment.userApi + '/school/save', data)
@@ -24,16 +25,16 @@ export class AdministrationService {
     return this.http.get<any>(environment.userApi+'/school/findall')
   }
 
-  public getDeletedById(id:number):Observable<any>{
-    return this.http.delete<any>(environment.userApi+'/school/deletebyid/'+id)
+  public getSchoolDeletedById(id:number):Observable<any>{
+    return this.http.get<any>(environment.userApi+'/school/deletebyid/'+id)
   }
 
   public getSchoolById(id:number):Observable<any>{
-    return this.http.delete<any>(environment.userApi+'/school/getbyid/'+id)
+    return this.http.get<any>(environment.userApi+'/school/getbyid/'+id)
   }
 
   //school Type calls
-  public schoolType(data: SchoolTypeDto): Observable<any> {
+  public schoolType(data: any): Observable<any> {
     return this.http.post<any>(environment.userApi + '/schooltype/save', data)
   }
   public getAllSchoolType():Observable<any>{
@@ -49,7 +50,7 @@ export class AdministrationService {
 
 
   //Religion Calls//
-  public postReligion(data: ReligionDto): Observable<any> {
+  public postReligion(data: any): Observable<any> {
     return this.http.post<any>(environment.userApi + '/religion/savereligion', data)
   }
 
@@ -61,13 +62,13 @@ export class AdministrationService {
     return this.http.get<any>(environment.userApi + '/religion/deleteid/'+id)
   }
 
-  public findReligionById(id:number): Observable<any> {
+  public getReligionById(id:number): Observable<any> {
     return this.http.get<any>(environment.userApi + '/religion/getbyidrel/'+id)
   }
 
 
   //MT calls
-  public postMT(data: MotherTongueDto): Observable<any> {
+  public postMT(data: any): Observable<any> {
     return this.http.post(environment.userApi + '/mt/save', data)
   }
 
@@ -87,7 +88,7 @@ export class AdministrationService {
 
   //Caste Calls
 
-  public postCaste(data: CasteDto): Observable<any> {
+  public postCaste(data: any): Observable<any> {
     return this.http.post<any>(environment.userApi + '/caste/savecaste', data)
   }
 
@@ -106,7 +107,7 @@ export class AdministrationService {
 
   //SubCaste Calls
   
-  public postSubCasteSave(data:SubCasteDto):Observable<any>{
+  public postSubCasteSave(data:any):Observable<any>{
       return this.http.post<any>(environment.userApi+'/subcaste/savesubcaste',data)
   }
 
@@ -121,7 +122,7 @@ export class AdministrationService {
   
   
   public deleteSubCasteById(id:number):Observable<any>{
-    return this.http.get<any>(environment.userApi+'/subcaste/deletebyid/'+id)
+    return this.http.delete<any>(environment.userApi+'/subcaste/deleteid/'+id)
 }
   
   
@@ -129,7 +130,7 @@ export class AdministrationService {
   
   //Payemnt Calls 
 
-  public payment(data: PaymentTypeDto): Observable<any> {
+  public payment(data: any): Observable<any> {
     return this.http.post<any>(environment.userApi + '/paymenttype/savepaymenttype', data)
   }
 
@@ -147,24 +148,27 @@ public deletePaymentTypeById(id:number):Observable<any>{
 
   //branch Calls
 
-  public postBranch(data: BranchDto): Observable<any> {
+  public postBranch(data: any): Observable<any> {
     return this.http.post<any>(environment.userApi + '/branch/save', data)
   }
 
   public getBranchById(id:number): Observable<any> {
-    return this.http.get<any>(environment.userApi + '/branch/getbyid'+id)
+    return this.http.get<any>(environment.userApi + '/branch/getbyid/'+id)
   }
 
   public getAllBranch(): Observable<any> {
-    return this.http.get<any>(environment.userApi + '/branch/findall')
+    return this.http.get<any>(environment.userApi +'/branch/findall')
   }
 
+  public deleteBranchById(id:number): Observable<any> {
+    return this.http.get<any>(environment.userApi+'/branch/deletebyid/'+id)
+  }
 
 
   //Occupation calls
   
-  public postOccupation(data: OccupationDto): Observable<any> {
-    return this.http.post<any>(environment.userApi + '/occupation/saveoccupation', data)
+  public postOccupation(data: any): Observable<any> {
+    return this.http.post<any>(environment.userApi + '/occupation/saveoccupation',data)
   }
 
   public getAllOccupationData():Observable<any>{
@@ -183,7 +187,7 @@ public deletePaymentTypeById(id:number):Observable<any>{
 
   //Nationality calls
   
-  public postNationality(data: NationalityDto): Observable<any> {
+  public postNationality(data: any): Observable<any> {
     return this.http.post<any>(environment.userApi + '/nationality/save', data)
   }
 
@@ -199,12 +203,13 @@ public deletePaymentTypeById(id:number):Observable<any>{
 
   
   public deleteNationalityById(id:number): Observable<any> {
-    return this.http.get<any>(environment.userApi + '/nationality/deleteid/'+id)
+    return this.http.get<any>(environment.userApi + '/nationality/deletebyid/'+id)
   }
 
   //Society calls
  
-  public postSociety(data: SocietyDto): Observable<any> {
+
+  public postSociety(data: any): Observable<any> {
     return this.http.post<any>(environment.userApi + '/society/save', data)
   }
 
@@ -222,12 +227,13 @@ public deletePaymentTypeById(id:number):Observable<any>{
   
 
   // class Calls
+ 
   public postClass(data: ClassDto): Observable<any> {
     return this.http.post<any>(environment.userApi + '/class/save', data)
   }
 
   public getAllClassData(): Observable<any> {
-    return this.http.get<any>(environment.userApi + '/class/findall')
+    return this.http.get<any>(environment.userApi+'/class/findall')
   }
 
 
@@ -241,7 +247,7 @@ public deletePaymentTypeById(id:number):Observable<any>{
   }
 
   //Books Name
-  public postBook(data:BookDto):Observable<any>{
+  public postBook(data:any):Observable<any>{
     return this.http.post<any>(environment.userApi+'/book/save',data)
   }
 
@@ -257,6 +263,8 @@ public deletePaymentTypeById(id:number):Observable<any>{
     return this.http.get<any>(environment.userApi+'/book/deletebyid/'+id)
   }
 
-  
+  public getAllCountry():Observable<any>{
+    return this.http.get<any>(environment.userApi+'/country')
+  }
   
 }

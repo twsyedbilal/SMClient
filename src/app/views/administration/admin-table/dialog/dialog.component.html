@@ -1,0 +1,30 @@
+
+<div class="mat-card" *ngIf='formData !=null || formData !=Undefined '>
+  <mat-toolbar  color='primary'><span style="color:#fff">Update {{data.status}} Master</span> </mat-toolbar>
+
+  <form [formGroup]='form'  *ngIf='form !=null' #formDirective="ngForm" (ngSubmit)='updateForm(form,formDirective)'>
+
+    <mat-form-field class="example-full-width formFieldAlign">
+      <input matInput formControlName='name' placeholder="Name">
+      <mat-error *ngIf='form.get("name").hasError("required")'> Name is <strong>
+          required</strong></mat-error>
+      <mat-error *ngIf="form.get('name').hasError('pattern')">
+         Name <strong>only Charecters allow</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width formFieldAlign">
+      <input matInput formControlName='code' placeholder="Code">
+      <mat-error *ngIf='form.get("code").hasError("required")'>school Code Name is <strong>
+        required</strong></mat-error>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+    <mat-error *ngIf="form.get('code').hasError('pattern')">
+       Code  <strong>only Numbers allow</strong>
+    </mat-error>
+  
+    </mat-form-field>
+    <div>
+      <button (click)='updateForm()' mat-raised-button type="submit" class="submit-btn" color="primary">
+        <span  class='submit-title'>Update</span></button>
+  </div>
+  </form>
+</div>

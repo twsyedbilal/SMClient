@@ -29,6 +29,7 @@ import { BranchTableComponent } from './admin-table/branch-table/branch-table.co
 import { OccupationTableComponent } from './admin-table/occupation-table/occupation-table.component';
 import { SocietyTableComponent } from './admin-table/society-table/society-table.component';
 import { NationalityTableComponent } from './admin-table/nationality-table/nationality-table.component';
+import { SubCasteMasterComponent } from './sub-caste-master/sub-caste-master.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
       {
         path:'caste',
         component:CasteMasterComponent,
+      },
+      {
+          path:'SubCaste',
+          component:SubCasteMasterComponent
       },
       {
         path:'mothertongue',

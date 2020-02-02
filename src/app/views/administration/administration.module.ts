@@ -3,7 +3,11 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
 import { AdministrationRoutingModule } from './administration-routing.module';
 import { LayoutComponent } from './layout/layout.component';
-import { MatMenuModule, MatStepperModule, MatFormFieldModule, MatCheckboxModule, MatDatepickerModule, MatSelectModule, MatRadioModule, MatInputModule, MatButtonModule, MatToolbarModule, MatTableModule, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule, MatIconModule, MatTooltip, MatTooltipModule } from '@angular/material';
+import { MatMenuModule, MatStepperModule, MatFormFieldModule,
+   MatCheckboxModule, MatDatepickerModule, MatSelectModule, MatRadioModule,
+    MatInputModule, MatButtonModule, MatToolbarModule, MatTableModule, 
+    MatPaginatorModule, MatSortModule, MatProgressSpinnerModule, MatIconModule,
+     MatTooltip, MatTooltipModule, MatDialogModule } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
@@ -40,6 +44,11 @@ import { OccupationTableComponent } from './admin-table/occupation-table/occupat
 import { SocietyTableComponent } from './admin-table/society-table/society-table.component';
 import { NationalityTableComponent } from './admin-table/nationality-table/nationality-table.component';
 import { SubCasteTableComponent } from './admin-table/sub-caste-table/sub-caste-table.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { SchoolDialogComponent } from './admin-table/school-dialog/school-dialog.component';
+import { DialogComponent } from './admin-table/dialog/dialog.component';
+import { ClassdialogComponent } from './admin-table/classdialog/classdialog.component';
+import { SubCasteMasterComponent } from './sub-caste-master/sub-caste-master.component';
 
 @NgModule({
   declarations: [LayoutComponent, LanguageMasterComponent,
@@ -47,12 +56,20 @@ import { SubCasteTableComponent } from './admin-table/sub-caste-table/sub-caste-
       OccupationMasterComponent, SocityMasterComponent,
       NationalityMasterComponent, MotherTongueMasterComponent, 
       BranchMasterComponent, SchoolMasterComponent, SchoolTypeMasterComponent,
-       PaymentMasterComponent, ClassMasterComponent, BookMasterComponent,TableLayoutComponent, StudentTableComponent, SchoolTypeComponent, TableComponent, PaymentTableComponent, SchoolTableComponent, ClassTableComponent, BookTableComponent, ReligionTableComponent, CasteTableComponent, MotherTongueTableComponent, BranchTableComponent, OccupationTableComponent, SocietyTableComponent, NationalityTableComponent, SubCasteTableComponent],
+       PaymentMasterComponent, ClassMasterComponent, BookMasterComponent
+       ,TableLayoutComponent, StudentTableComponent, SchoolTypeComponent, TableComponent, 
+       PaymentTableComponent, SchoolTableComponent, ClassTableComponent, BookTableComponent, 
+       ReligionTableComponent, CasteTableComponent, MotherTongueTableComponent, 
+       BranchTableComponent, OccupationTableComponent, SocietyTableComponent,
+       NationalityTableComponent, SubCasteTableComponent, SchoolDialogComponent,
+        DialogComponent, ClassdialogComponent, SubCasteMasterComponent],
   imports: [
     MatSidenavModule,
     MatCardModule,
     FormsModule,
+    MatDialogModule,
     MatListModule,
+    MatTabsModule,
     MatSnackBarModule,
     MatTooltipModule,
     MatIconModule,
@@ -80,6 +97,7 @@ import { SubCasteTableComponent } from './admin-table/sub-caste-table/sub-caste-
     ReactiveFormsModule,
     FormsModule,
     AdministrationRoutingModule
-  ]
+  ],
+  entryComponents:[SchoolDialogComponent,DialogComponent,ClassdialogComponent]
 })
 export class AdministrationModule { }

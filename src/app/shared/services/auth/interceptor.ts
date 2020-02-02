@@ -24,7 +24,6 @@ export class Interceptor implements HttpInterceptor {
 
     public getAuthToken(): string {
         let userDetails: UserDetails = JSON.parse(sessionStorage.getItem('userDetails'));
-        console.log(userDetails);
         return userDetails.authToken ? userDetails.authToken : null;
     }
 }

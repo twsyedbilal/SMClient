@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDialog } from '@angular/material';
 import { AdministrationService } from '../../administration.service';
 import { SnackBarMassageComponent } from 'app/views/snack-bar-massage/snack-bar-massage.component';
+import { DialogComponent } from '../dialog/dialog.component';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-mother-tongue-table',
@@ -15,7 +17,10 @@ export class MotherTongueTableComponent implements OnInit {
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
   constructor(private service: AdministrationService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    public dailog: MatDialog,
+    private overlay:Overlay
+ ) { }
 
   ngOnInit() {
     this.getMTData();
@@ -31,7 +36,28 @@ export class MotherTongueTableComponent implements OnInit {
     });
  }
 
-  applyFilter(filterValue: string) {
+ openDialog(id) {
+  console.log(id);
+  const scrollStrategy = this.overlay.scrollStrategies.reposition();
+  const dialogRef = this.dailog.open(DialogComponent, {
+    data:{id:id,status:'Mother Tongue'},
+    width: '50%',
+    maxWidth:'92vw !important',
+    height:'auto',
+    scrollStrategy:scrollStrategy,
+    closeOnNavigation: false
+  });
+  dialogRef.afterClosed().subscribe(data => {
+    console.log(data);
+    if(data==201){
+      this.getMTData();
+    }
+  });
+}
+
+ 
+ 
+ applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 

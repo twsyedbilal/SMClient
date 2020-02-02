@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDialog } from '@angular/material';
 import { AdministrationService } from '../../administration.service';
 import { SnackBarMassageComponent } from 'app/views/snack-bar-massage/snack-bar-massage.component';
+import { Overlay } from '@angular/cdk/overlay';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-sub-caste-table',
@@ -15,7 +17,9 @@ export class SubCasteTableComponent implements OnInit {
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
   constructor(private service: AdministrationService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    public dailog: MatDialog,
+    private overlay:Overlay) { }
 
   ngOnInit() {
     this.getSubCaste();
@@ -35,6 +39,25 @@ export class SubCasteTableComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  openDialog(id) {
+    console.log(id);
+    const scrollStrategy = this.overlay.scrollStrategies.reposition();
+    const dialogRef = this.dailog.open(DialogComponent, {
+      data:{id:id,status:'subCaste'},
+      width: '50%',
+      maxWidth:'92vw !important',
+      height:'auto',
+      scrollStrategy:scrollStrategy,
+      closeOnNavigation: false
+    });
+    dialogRef.afterClosed().subscribe(data => {
+      console.log(data);
+      if(data==201){
+        this.getSubCaste();
+      }
+    });
+  }
+ 
   
   delete(id:number){
     console.log(id);

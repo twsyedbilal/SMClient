@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AdministrationService } from '../../administration.service';
 import { SchoolTypeDto } from '../../administration';
-import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDialog } from '@angular/material';
 import { SnackBarMassageComponent } from 'app/views/snack-bar-massage/snack-bar-massage.component';
+import { DialogComponent } from '../dialog/dialog.component';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-school-type',
@@ -15,9 +17,13 @@ export class SchoolTypeComponent implements OnInit {
   recordMsg:boolean=false;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
-
+  
   constructor(private service: AdministrationService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    public dailog: MatDialog,
+    private overlay:Overlay
+  
+    ) { }
 
   ngOnInit() {
   this.getSchoolType();
@@ -30,6 +36,27 @@ export class SchoolTypeComponent implements OnInit {
       this.dataSource = new MatTableDataSource(res.data);
       this.dataSource.paginator = this.paginator;
      console.log(this.dataSource);
+    });
+  }
+
+
+
+  openDialog(id) {
+    console.log(id);
+    const scrollStrategy = this.overlay.scrollStrategies.reposition();
+    const dialogRef = this.dailog.open(DialogComponent, {
+      data:{id:id,status:'School Type'},
+      width: '50%',
+      maxWidth:'92vw !important',
+      height:'auto',
+      scrollStrategy:scrollStrategy,
+      closeOnNavigation: false
+    });
+    dialogRef.afterClosed().subscribe(data => {
+      console.log(data);
+      if(data==201){
+        this.getSchoolType();
+      }
     });
   }
 

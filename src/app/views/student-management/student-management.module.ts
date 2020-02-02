@@ -8,16 +8,24 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
+import { StudentsTableComponent } from './students-table/students-table.component';
 
 @NgModule({
   declarations: [
-    CreateAdmissionComponent
+    CreateAdmissionComponent,
+    StudentsTableComponent
   ],
   imports: [
     CommonModule,
     MatCardModule,
     MatButtonModule,
+    FlexLayoutModule,
+    HttpClientModule,
     MatInputModule,
+    MatSelectModule,
     MatRadioModule,
     MatDatepickerModule,
     MatCheckboxModule,

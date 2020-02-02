@@ -1,0 +1,35 @@
+<div class="mat-card">
+  <mat-toolbar color='primary'><span style="color:#fff">Update Class Master</span></mat-toolbar>
+    <form [formGroup]='classForm' *ngIf='classForm !=null' #formDirective="ngForm" (ngSubmit)='submitClassForm(classForm,formDirective)'>
+    
+    <mat-form-field class="example-full-width formFieldAlign">
+      <input matInput formControlName='cName'  placeholder="Class Name">
+      <mat-error *ngIf='classForm.get("cName").hasError("required")'>Class Name is<strong>Required</strong></mat-error>
+      <mat-error *ngIf='!classForm.get("cName").hasError("required")
+             && classForm.get("cName").hasError("pattern")'>
+             Class Name <strong>only Charecters allow</strong></mat-error>
+   
+    </mat-form-field>
+  
+    <mat-form-field  class="example-full-width formFieldAlign">
+      <input matInput formControlName='cCode'  placeholder="Class Code">
+      <mat-error *ngIf='classForm.get("cCode").hasError("required")'>Class Code is <strong>Required</strong></mat-error>
+      <mat-error *ngIf='!classForm.get("cCode").hasError("required")
+             && classForm.get("cCode").hasError("pattern")'>
+             Class Code <strong>only Numbers allow</strong></mat-error>
+    </mat-form-field>
+    
+      
+    <mat-form-field  class="example-full-width formFieldAlign">
+    <input matInput formControlName='cFees' placeholder="Fees">
+    <mat-error *ngIf='classForm.get("cFees").hasError("required")'>Class Fees is <strong>Required</strong></mat-error>
+    <mat-error *ngIf='!classForm.get("cFees").hasError("required")
+           && classForm.get("cFees").hasError("pattern")'>
+           Class Fees <strong>only Numbers allow</strong></mat-error>
+  </mat-form-field>
+
+    <div>
+      <button mat-raised-button  type="submit" class="submit-btn" color="primary"><span class='submit-title'>Submit</span></button>
+      </div>  
+    </form>
+  </div>

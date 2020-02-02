@@ -16,7 +16,7 @@ export const rootRouterConfig: Routes = [
       { 
         path: 'sessions', 
         loadChildren: () => import('./views/sessions/sessions.module').then(m => m.SessionsModule),
-      }
+      },
     ]
   },
   {

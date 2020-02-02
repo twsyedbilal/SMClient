@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, MatPaginator, MatSnackBar, MatTableDataSource } from '@angular/material';
+import { MatSort, MatPaginator, MatSnackBar, MatTableDataSource, MatDialog } from '@angular/material';
 import { AdministrationService } from '../../administration.service';
 import { SnackBarMassageComponent } from 'app/views/snack-bar-massage/snack-bar-massage.component';
+import { DialogComponent } from '../dialog/dialog.component';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-book-table',
@@ -15,7 +17,10 @@ export class BookTableComponent implements OnInit {
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
   constructor(private service: AdministrationService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    public dailog: MatDialog,
+    private overlay:Overlay
+ ) { }
 
 
   ngOnInit() {
@@ -29,6 +34,25 @@ export class BookTableComponent implements OnInit {
       this.dataSource = new MatTableDataSource(res.data);
       this.dataSource.paginator = this.paginator;
      console.log(this.dataSource);
+    });
+  }
+
+  openDialog(id) {
+    console.log(id);
+    const scrollStrategy = this.overlay.scrollStrategies.reposition();
+    const dialogRef = this.dailog.open(DialogComponent, {
+      data:{id:id,status:'Book'},
+      width: '50%',
+      maxWidth:'92vw !important',
+      height:'auto',
+      scrollStrategy:scrollStrategy,
+      closeOnNavigation: false
+    });
+    dialogRef.afterClosed().subscribe(data => {
+      console.log(data);
+      if(data==201){
+        this.getBookData();
+      }
     });
   }
 

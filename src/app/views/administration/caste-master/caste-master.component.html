@@ -1,28 +1,36 @@
-<div class="mat-card">
-  <mat-toolbar color='primary'><span style="color:#fff">Caste Master</span></mat-toolbar>
-    <form [formGroup]='casteForm' (ngSubmit)='submit()'>
-  
-    <mat-form-field  class="example-full-width formFieldAlign">
-      <input matInput formControlName='casteName' placeholder="Caste Name">
-      <mat-error *ngIf='casteForm.get("casteName").hasError("required")'>
-        Caste Name is <strong>required</strong></mat-error>
-      <mat-error *ngIf='!casteForm.get("casteName").hasError("required")
-      && casteForm.get("casteName").hasError("pattern")'>
-        Caste Name  <strong>only Charecters allow</strong></mat-error>
-    </mat-form-field>
-  
-    <mat-form-field class="example-full-width formFieldAlign">
-      <input matInput formControlName='code' placeholder="Cast Code">
-      <mat-error *ngIf='casteForm.get("code").hasError("required")'>
-        Caste Code is <strong>required</strong></mat-error>
-      <mat-error *ngIf='!casteForm.get("code").hasError("required")
-      && casteForm.get("code").hasError("pattern")'>
-        Caste Code  <strong>only Number allow</strong></mat-error>
-    </mat-form-field>
-  
-    <div>
-      <button mat-raised-button  type="submit" class="submit-btn" color="primary"><span class='submit-title'>Submit</span></button>
-      </div>  
-    </form>
-  </div>
-  
+<mat-tab-group (selectedTabChange)="tabChanged($event)">
+  <mat-tab label="Master">
+        <div class="mat-card">
+      <mat-toolbar color='primary'><span style="color:#fff">Caste Master</span></mat-toolbar>
+        <form [formGroup]='casteForm' #formDirective="ngForm" (ngSubmit)='submit(casteForm,formDirective)'>
+      
+        <mat-form-field  class="example-full-width formFieldAlign">
+          <input matInput formControlName='casteName' placeholder="Caste Name">
+          <mat-error *ngIf='casteForm.get("casteName").hasError("required")'>
+            Caste Name is <strong>required</strong></mat-error>
+          <mat-error *ngIf='!casteForm.get("casteName").hasError("required")
+          && casteForm.get("casteName").hasError("pattern")'>
+            Caste Name  <strong>only Charecters allow</strong></mat-error>
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput formControlName='code' placeholder="Cast Code">
+          <mat-error *ngIf='casteForm.get("code").hasError("required")'>
+            Caste Code is <strong>required</strong></mat-error>
+          <mat-error *ngIf='!casteForm.get("code").hasError("required")
+          && casteForm.get("code").hasError("pattern")'>
+            Caste Code  <strong>only Number allow</strong></mat-error>
+        </mat-form-field>
+      
+        <div>
+          <button mat-raised-button  type="submit" class="submit-btn" color="primary"><span class='submit-title'>Submit</span></button>
+          </div>  
+        </form>
+      </div>
+  </mat-tab>
+  <mat-tab label="Caste List"> 
+    <div *ngIf='tableshow ==true'>
+      <app-caste-table></app-caste-table>
+   </div>
+  </mat-tab>
+</mat-tab-group>

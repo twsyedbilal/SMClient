@@ -1,6 +1,9 @@
+<mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+  <mat-tab label="Master"> 
+    
 <div class="mat-card">
   <mat-toolbar color='primary'><span style="color:#fff">Class Master</span></mat-toolbar>
-    <form [formGroup]='classForm' (ngSubmit)='submitClassForm()'>
+    <form [formGroup]='classForm' #formDirective="ngForm" (ngSubmit)='submitClassForm(classForm,formDirective)'>
     
     <mat-form-field class="example-full-width formFieldAlign">
       <input matInput formControlName='cName'  placeholder="Class Name">
@@ -33,4 +36,11 @@
       </div>  
     </form>
   </div>
-  
+      
+  </mat-tab>
+  <mat-tab label="Class Table">
+    <div *ngIf='tableshow ==true'>
+      <app-class-table></app-class-table>
+    </div>
+  </mat-tab>
+</mat-tab-group>

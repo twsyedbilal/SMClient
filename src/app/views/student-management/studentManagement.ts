@@ -1,0 +1,53 @@
+export class AdmissionDto {
+id:number;
+uidNo:number;
+idNo:number;
+studentRegNo:string;
+year:string;
+date:Date;
+surName:string='';
+studentsName:string;
+fathersName:string;
+mothersName:string;
+guardiansName:string;
+gender:string;
+dateOfBirth:string;
+dateOfBirthInWords:string;
+placeOfBirth:string;
+income:number;
+contactNo:string;
+status:string;
+liveStatus:string;
+identityByMarkOrAadharNo:string;
+classId:number;
+schoolId:number;
+schoolTypeId:number;
+religionId:number;
+castId:number;
+subCastId:number;
+occupationId:number;
+societyId:number;
+nationalityId:number;
+mothertongId:number;
+address:AddressDto[]=[];
+document:DocumentDto[]=[];
+};
+
+export class AddressDto{
+    id:number;
+    detailAddress:string;
+    pincode:number;
+    cityId:number;
+    stateId:number;
+    countryId:number;
+}
+export class DocumentDto{
+    id:number;
+    fileName:string;
+    fileType:string;
+    name:string;
+    path:string;
+    store:string;
+    url:string;
+    doc:string[]=[];
+}

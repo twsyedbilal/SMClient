@@ -1,3 +1,9 @@
+export class Response<T>{
+    statusText:string;
+    code:number;
+    message:string;
+    data:T;
+}
 export class SchoolDto{
     id:number;
     schoolAddress:string;
@@ -35,6 +41,7 @@ export class BookDto{
 export class ClassDto{
     className:string;
     code:string;
+    id?:number;
     fees:number;
 }
 
@@ -91,4 +98,12 @@ export class TableData{
     code:number;
     id:number;
     delete:boolean=false;
+}
+
+
+export class Master{
+    name:string;
+    code:number;
+    id?:number;
+   
 }

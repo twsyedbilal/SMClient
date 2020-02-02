@@ -1,7 +1,10 @@
+
 <div class='table-card'>  
+<div style="width:30%;float: right;">
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search..">
   </mat-form-field>
+  </div>
   <mat-toolbar color='primary'><span style="color:#fff">School Type List</span></mat-toolbar>
   <table  mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
     <!-- Position Column -->
@@ -14,7 +17,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.schoolTypeName}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
     <!-- Weight Column -->
@@ -26,7 +29,7 @@
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef class="icon-align "> Edit</th>
       <td mat-cell *matCellDef="let element" class="icon-align">
-        <i class="material-icons icon_edit_color" routerLink='../../master-layout/schoolType'[queryParams]='{id:element.id}' matTooltip="Edit">create</i>
+        <i class="material-icons icon_edit_color" (click)='openDialog(element.id)' matTooltip="Edit">create</i>
       </td>
     </ng-container>
    

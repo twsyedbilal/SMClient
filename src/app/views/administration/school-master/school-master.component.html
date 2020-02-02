@@ -1,44 +1,54 @@
-<div class="mat-card">
-  <mat-toolbar color='primary'><span style="color:#fff">School Master</span> </mat-toolbar>
-  <form [formGroup]='schoolForm' (ngSubmit)='submitForm()'>
-    <mat-form-field class="example-full-width formFieldAlign">
-      <input matInput formControlName='schoolName' placeholder="School Name *">
-      <mat-error *ngIf="schoolForm.get('schoolName').hasError('required')">
-        School Name <strong>required</strong>
-      </mat-error>
-      <mat-error *ngIf="!schoolForm.get('schoolName').hasError('required') &&
-    schoolForm.get('schoolName').hasError('pattern')">
-        School Name <strong>only Charecters allow</strong>
-      </mat-error>
-
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width formFieldAlign">
-      <input matInput formControlName='schoolCode' placeholder="School Code">
-      <mat-error *ngIf="schoolForm.get('schoolCode').hasError('required')">
-        School Code <strong>required</strong>
-      </mat-error>
-      <mat-error *ngIf="!schoolForm.get('schoolCode').hasError('required') &&
-      schoolForm.get('schoolCode').hasError('pattern')">
-        School Code <strong>only Numbers allow</strong>
-      </mat-error>
-
-    </mat-form-field>
-
-
-  <mat-form-field class="example-full-width formFullFieldAlign">
-     <input matInput formControlName='schoolAddress' placeholder="school Address">
-      <mat-error *ngIf="schoolForm.get('schoolAddress').hasError('required')">
-        School Address <strong>required</strong>
-      </mat-error>
-      <mat-error *ngIf="!schoolForm.get('schoolAddress').hasError('required') &&
-                schoolForm.get('schoolAddress').hasError('pattern')">
-        School Address <strong>required</strong>
-      </mat-error>
-  </mat-form-field>
-    <div>
-      <button mat-raised-button type="submit" class="submit-btn" color="primary"><span
-          class='submit-title'>Submit</span></button>
+<mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+  <mat-tab label="Master">
+    <div class="mat-card">
+      <mat-toolbar color='primary'><span style="color:#fff">School Master</span> </mat-toolbar>
+      <form [formGroup]='schoolForm' #formDirective="ngForm" (ngSubmit)='submitForm(schoolForm,formDirective)'>
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput formControlName='schoolName' placeholder="School Name *">
+          <mat-error *ngIf="schoolForm.get('schoolName').hasError('required')">
+            School Name <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!schoolForm.get('schoolName').hasError('required') &&
+        schoolForm.get('schoolName').hasError('pattern')">
+            School Name <strong>only Charecters allow</strong>
+          </mat-error>
+    
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput formControlName='schoolCode' placeholder="School Code">
+          <mat-error *ngIf="schoolForm.get('schoolCode').hasError('required')">
+            School Code <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!schoolForm.get('schoolCode').hasError('required') &&
+          schoolForm.get('schoolCode').hasError('pattern')">
+            School Code <strong>only Numbers allow</strong>
+          </mat-error>
+    
+        </mat-form-field>
+    
+    
+      <mat-form-field class="example-full-width formFullFieldAlign">
+         <input matInput formControlName='schoolAddress' placeholder="school Address">
+          <mat-error *ngIf="schoolForm.get('schoolAddress').hasError('required')">
+            School Address <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!schoolForm.get('schoolAddress').hasError('required') &&
+                    schoolForm.get('schoolAddress').hasError('pattern')">
+            School Address <strong>required</strong>
+          </mat-error>
+      </mat-form-field>
+        <div>
+          <button mat-raised-button type="submit" class="submit-btn" color="primary"><span
+              class='submit-title'>Submit</span></button>
+        </div>
+      </form>
+    </div> 
+  </mat-tab>
+  <mat-tab label="School List">
+    <div *ngIf='tableshow ==true'>
+      <app-school-table></app-school-table>
     </div>
-  </form>
-</div>
+  </mat-tab>
+  </mat-tab-group>
+

@@ -1,31 +1,42 @@
-<div class="mat-card">
-  <mat-toolbar color='primary'><span style="color:#fff">Branch Master</span></mat-toolbar>
-    <form [formGroup]='branchForm' (ngSubmit)='submit()'>
-    <mat-form-field class="example-full-width formFieldAlign">
-      <input matInput formControlName='name' placeholder="Branch Name">
-  
-      <mat-error *ngIf='branchForm.get("name").hasError("required")'>
-        Branch Name is <strong>required</strong></mat-error>
-      <mat-error *ngIf='!branchForm.get("name").hasError("required")
-      && branchForm.get("name").hasError("pattern")'>
-        Branch Name  <strong>only Charecters allow</strong></mat-error>
-    </mat-form-field>
-  
-    
-  
-    <mat-form-field  class="example-full-width formFieldAlign">
-      <input matInput formControlName='code' placeholder="Branch Code">
-      <mat-error *ngIf='branchForm.get("code").hasError("required")'>
-        Branch Code is <strong>required</strong></mat-error>
-      <mat-error *ngIf='!branchForm.get("code").hasError("required")
-      && branchForm.get("code").hasError("pattern")'>
-        Branch Code  <strong>only Numbers allow</strong></mat-error>
-    
-    </mat-form-field>
-  
-    <div>
-      <button mat-raised-button  type="submit" class="submit-btn" color="primary"><span class='submit-title'>Submit</span></button>
-      </div>  
-    </form>
-  </div>
+<mat-tab-group (selectedTabChange)="tabChanged($event)">
+  <mat-tab label="Master">  
+
+    <div class="mat-card">
+      <mat-toolbar color='primary'><span style="color:#fff">Branch Master</span></mat-toolbar>
+        <form [formGroup]='branchForm' #formDirective="ngForm" (ngSubmit)='submit(formDirective,branchForm)'>
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput formControlName='name' placeholder="Branch Name">
+      
+          <mat-error *ngIf='branchForm.get("name").hasError("required")'>
+            Branch Name is <strong>required</strong></mat-error>
+          <mat-error *ngIf='!branchForm.get("name").hasError("required")
+          && branchForm.get("name").hasError("pattern")'>
+            Branch Name  <strong>only Charecters allow</strong></mat-error>
+        </mat-form-field>
+      
+        
+      
+        <mat-form-field  class="example-full-width formFieldAlign">
+          <input matInput formControlName='code' placeholder="Branch Code">
+          <mat-error *ngIf='branchForm.get("code").hasError("required")'>
+            Branch Code is <strong>required</strong></mat-error>
+          <mat-error *ngIf='!branchForm.get("code").hasError("required")
+          && branchForm.get("code").hasError("pattern")'>
+            Branch Code  <strong>only Numbers allow</strong></mat-error>
+        
+        </mat-form-field>
+      
+        <div>
+          <button mat-raised-button  type="submit" class="submit-btn" color="primary"><span class='submit-title'>Submit</span></button>
+          </div>  
+        </form>
+      </div>
+  </mat-tab>
+  <mat-tab label="Branch Table">
+    <div *ngIf='tableshow ==true'>
+      <app-branch-table></app-branch-table>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
   

@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatSnackBar, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatSnackBar, MatTableDataSource, MatDialog } from '@angular/material';
 import { AdministrationService } from '../../administration.service';
 import { SnackBarMassageComponent } from 'app/views/snack-bar-massage/snack-bar-massage.component';
+import { SchoolDialogComponent } from '../school-dialog/school-dialog.component';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-school-table',
@@ -9,13 +11,16 @@ import { SnackBarMassageComponent } from 'app/views/snack-bar-massage/snack-bar-
   styleUrls: ['./school-table.component.scss']
 })
 export class SchoolTableComponent implements OnInit {
-  displayedColumns: string[] = ['srNo', 'name', 'code','edit','delete'];
+  displayedColumns: string[] = ['srNo', 'name', 'code','Address','edit','delete'];
   dataSource:any;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
   constructor(private service: AdministrationService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    public dailog: MatDialog,
+    private overlay:Overlay,
+    ) { }
 
  
   ngOnInit() {
@@ -36,7 +41,7 @@ export class SchoolTableComponent implements OnInit {
 
   delete(id:number){
     console.log(id);
-    this.service.deletePaymentTypeById(id)
+    this.service.getSchoolDeletedById(id)
     .subscribe(res=>{
       console.log(res);
         if(res.code==200){
@@ -63,5 +68,23 @@ export class SchoolTableComponent implements OnInit {
     })
   }
 
+  openDialog(id) {
+    console.log(id);
+    const scrollStrategy = this.overlay.scrollStrategies.reposition();
+    const dialogRef = this.dailog.open(SchoolDialogComponent, {
+      data: id,
+      width: '50%',
+      maxWidth:'92vw !important',
+      height:'auto',
+      scrollStrategy:scrollStrategy,
+      closeOnNavigation: false
+    });
+    dialogRef.afterClosed().subscribe(data => {
+      console.log(data);
+      if(data==201){
+        this.getSchoolData();
+      }
+    });
+  }
 
 }

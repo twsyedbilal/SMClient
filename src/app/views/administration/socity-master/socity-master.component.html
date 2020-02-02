@@ -1,6 +1,9 @@
+<mat-tab-group (selectedTabChange)="tabChanged($event)">
+  <mat-tab label="Master">
+    
 <div class="mat-card">
   <mat-toolbar color='primary'><span style="color:#fff">Society Master</span></mat-toolbar>
-    <form (ngSubmit)='societyForm' [formGroup]='societyForm'>
+    <form (ngSubmit)='submit(societyForm,formDirective)' #formDirective="ngForm" [formGroup]='societyForm'>
     <mat-form-field class="example-full-width formFieldAlign">
       <input matInput formControlName='name' placeholder="Society Name">
       <mat-error *ngIf='societyForm.get("name").hasError("required")'>
@@ -24,4 +27,11 @@
       </div>  
     </form>
   </div>
-  
+  </mat-tab>
+  <mat-tab label="Society List">
+    <div *ngIf='tableshow==true'>
+     <app-society-table></app-society-table> 
+  </div>
+  </mat-tab>
+</mat-tab-group>
+

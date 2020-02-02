@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
 import { Regexpression } from 'app/views/utils/regExp';
-import { SchoolTypeDto } from '../administration';
+import { SchoolTypeDto, Master } from '../administration';
 import { AdministrationService } from '../administration.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatTabChangeEvent } from '@angular/material';
 import { SnackBarMassageComponent } from 'app/views/snack-bar-massage/snack-bar-massage.component';
 
 @Component({
@@ -14,6 +14,8 @@ import { SnackBarMassageComponent } from 'app/views/snack-bar-massage/snack-bar-
 })
 export class SchoolTypeMasterComponent implements OnInit {
     id:number;
+    tableshow=false;
+
     schoolType:FormGroup;
     validation=new Regexpression();
   constructor(private fb:FormBuilder,
@@ -48,13 +50,32 @@ export class SchoolTypeMasterComponent implements OnInit {
       schoolCode:['',[Validators.required,Validators.pattern(this.validation.onlyNumber)]]
     });
   }
+}
 
-   
-   }
+public tabChanged(tabChangeEvent: MatTabChangeEvent): void {
+  console.log(tabChangeEvent);
+    if(tabChangeEvent.tab.textLabel=='School Type List'){
+      this.tableshow=true;
+    }else{
+      this.tableshow=false;
+    }
+}
 
-  submitForm(){
-   let schooltype=new SchoolTypeDto();
-   schooltype.schoolTypeName=this.schoolType.get('schoolTypeName').value; 
+
+  submitForm(data: FormGroup, formDirective: FormGroupDirective){
+    if(this.schoolType.invalid){
+      this.snackBar.openFromComponent(SnackBarMassageComponent, {
+        data: {
+          message: 'Enter Required Field',
+          icon: 'error_outline',
+         },
+         duration:2000
+      });
+
+  }else{
+      
+   let schooltype=new Master();
+   schooltype.name=this.schoolType.get('schoolTypeName').value; 
    schooltype.code=this.schoolType.get('schoolCode').value;  
     if(this.id !=undefined){
       schooltype.id=this.id;
@@ -86,11 +107,12 @@ export class SchoolTypeMasterComponent implements OnInit {
              duration:2000
             
           });
+          formDirective.resetForm();
           this.schoolType.reset();
+        
         }
       });
     };
-   
+   }
   }
-
 }

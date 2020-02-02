@@ -1,4 +1,4 @@
 export class Regexpression{
-    onlyAlphabet=/^[A-Za-z]+$/;
+    onlyAlphabet=/^[A-Za-z ]+$/;
     onlyNumber=/^[0-9]+$/;
 }

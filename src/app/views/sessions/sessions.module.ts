@@ -22,11 +22,13 @@ import { Signin3Component } from './signin3/signin3.component';
 import { Signin4Component } from './signin4/signin4.component';
 import { Signin2Component } from './signin2/signin2.component';
 import { MainSigninComponent } from './main-signin/main-signin.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     SharedMaterialModule,
     FlexLayoutModule,

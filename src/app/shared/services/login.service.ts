@@ -54,7 +54,8 @@ export class LoginService {
           user.authorities.map(x=>{
             this.role=x.authority;
           })
-            this.router.navigate(['/others/'+this.role+'/'+user.id])
+              this.router.navigate(['/others/'+this.role+'/'+user.id])
+          
         }
         else{
           this.router.navigate(['/sessions/signin4'])

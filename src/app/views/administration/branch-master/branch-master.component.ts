@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
 import { Regexpression } from 'app/views/utils/regExp';
 import { AdministrationService } from '../administration.service';
-import { BranchDto } from '../administration';
+import { BranchDto, Master } from '../administration';
+import { MatSnackBar, MatTabChangeEvent } from '@angular/material';
+import { SnackBarMassageComponent } from 'app/views/snack-bar-massage/snack-bar-massage.component';
 
 @Component({
   selector: 'app-branch-master',
@@ -12,9 +14,12 @@ import { BranchDto } from '../administration';
 export class BranchMasterComponent implements OnInit {
   branchForm: FormGroup;
   validation = new Regexpression();
+  tableshow:boolean=false;
 
   constructor(private fb: FormBuilder,
-    private service: AdministrationService) { }
+    private service: AdministrationService,
+    private snackBar: MatSnackBar
+    ) { }
 
   ngOnInit() {
     this.branchForm = this.fb.group({
@@ -23,15 +28,49 @@ export class BranchMasterComponent implements OnInit {
     });
   }
 
-  submit() {
-    let data = new BranchDto();
-    data.branchName = this.branchForm.get('name').value;
-    data.branchCode = this.branchForm.get('code').value;
+
+
+
+  
+  public tabChanged(tabChangeEvent: MatTabChangeEvent): void {
+    console.log(tabChangeEvent);
+      if(tabChangeEvent.tab.textLabel=='Branch Table'){
+        this.tableshow=true;
+      }else{
+        this.tableshow=false;
+      }
+  }
+
+
+  submit({ form, formDirective }: { form: FormGroup; formDirective: FormGroupDirective; }): void {
+    if(this.branchForm.invalid){
+      this.snackBar.openFromComponent(SnackBarMassageComponent, {
+        data: {
+          message: 'Enter Field required',
+          icon: 'error_outline',
+         },
+         duration:3000
+      });
+    }
+    else{
+      let data = new Master();
+    data.name = this.branchForm.get('name').value;
+    data.code = this.branchForm.get('code').value;
     this.service.postBranch(data).subscribe(res => {
       console.log(res);
       if (res.code == 201) {
+        this.snackBar.openFromComponent(SnackBarMassageComponent, {
+          data: {
+            message: 'Successfully Created',
+            icon: 'check_circle_outline',
+           },
+           duration:3000
+        });
+        formDirective.resetForm();
         this.branchForm.reset();
       }
-    })
+    });
   }
+ }
+    
 }

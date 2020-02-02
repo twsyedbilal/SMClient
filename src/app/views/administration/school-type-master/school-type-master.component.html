@@ -1,8 +1,10 @@
+<mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+  <mat-tab label="Master">
+      
 <div class="mat-card">
   <mat-toolbar *ngIf='id ==undefined' color='primary'><span style="color:#fff">School Type Master</span> </mat-toolbar>
-  <mat-toolbar *ngIf='id !=undefined' color='primary'><span style="color:#fff">Update School Type Master</span> </mat-toolbar >
 
-  <form [formGroup]='schoolType' (ngSubmit)='submitForm()' *ngIf='schoolType !=null'>
+  <form [formGroup]='schoolType' #formDirective="ngForm" (ngSubmit)='submitForm(submitForm,formDirective)' *ngIf='schoolType !=null'>
 
     <mat-form-field class="example-full-width formFieldAlign">
       <input matInput formControlName='schoolTypeName' placeholder="School Type Name">
@@ -23,11 +25,16 @@
   
     </mat-form-field>
     <div>
-      <button *ngIf='id ==undefined' mat-raised-button type="submit" class="submit-btn" color="primary"><span
+      <button  mat-raised-button type="submit" class="submit-btn" color="primary"><span
           class='submit-title'>Submit</span></button>
-    
-    <button *ngIf='id !=undefined' mat-raised-button type="submit" class="submit-btn" color="primary"><span
-      class='submit-title'>Update</span></button>
   </div>
   </form>
 </div>
+  
+  </mat-tab>
+  <mat-tab label="School Type List">
+  <div *ngIf='tableshow ==true'>
+      <app-school-type></app-school-type>
+  </div>
+  </mat-tab>
+</mat-tab-group>

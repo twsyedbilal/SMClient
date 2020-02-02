@@ -48,18 +48,27 @@ export class NavigationService {
       state: "others/users"
     },
     {
+      name: "Account",
+      type: "dropDown",
+      icon: "person_add",
+      state:"adminis",
+      sub: [
+        { 
+          name: "Create Fees", 
+          state: "master-layout"
+         },
+      ]
+    },
+   
+    {
       name: "Administration",
       type: "dropDown",
       icon: "person_add",
       state:"adminis",
       sub: [
         { 
-          name: "Create All Master", 
+          name: "Create  Master", 
           state: "master-layout"
-         },
-         { 
-          name: "All Master List", 
-          state: "table-layout"
          },
       ]
     },
