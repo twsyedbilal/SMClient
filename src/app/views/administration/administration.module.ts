@@ -45,10 +45,10 @@ import { SocietyTableComponent } from './admin-table/society-table/society-table
 import { NationalityTableComponent } from './admin-table/nationality-table/nationality-table.component';
 import { SubCasteTableComponent } from './admin-table/sub-caste-table/sub-caste-table.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import { SchoolDialogComponent } from './admin-table/school-dialog/school-dialog.component';
 import { DialogComponent } from './admin-table/dialog/dialog.component';
 import { ClassdialogComponent } from './admin-table/classdialog/classdialog.component';
 import { SubCasteMasterComponent } from './sub-caste-master/sub-caste-master.component';
+import { SchoolDialogComponent } from './admin-table/school-dialog/school-dialog.component';
 
 @NgModule({
   declarations: [LayoutComponent, LanguageMasterComponent,
@@ -61,13 +61,12 @@ import { SubCasteMasterComponent } from './sub-caste-master/sub-caste-master.com
        PaymentTableComponent, SchoolTableComponent, ClassTableComponent, BookTableComponent, 
        ReligionTableComponent, CasteTableComponent, MotherTongueTableComponent, 
        BranchTableComponent, OccupationTableComponent, SocietyTableComponent,
-       NationalityTableComponent, SubCasteTableComponent, SchoolDialogComponent,
-        DialogComponent, ClassdialogComponent, SubCasteMasterComponent],
+       NationalityTableComponent, SubCasteTableComponent,SchoolDialogComponent,
+        DialogComponent,ClassdialogComponent,SubCasteMasterComponent],
   imports: [
     MatSidenavModule,
     MatCardModule,
     FormsModule,
-    MatDialogModule,
     MatListModule,
     MatTabsModule,
     MatSnackBarModule,
@@ -84,6 +83,8 @@ import { SubCasteMasterComponent } from './sub-caste-master/sub-caste-master.com
     HttpClientModule,
     MatCardModule,
     MatToolbarModule,
+    MatDialogModule,
+    MatTabsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     MatButtonModule,

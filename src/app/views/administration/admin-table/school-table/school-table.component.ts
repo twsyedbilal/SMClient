@@ -11,7 +11,7 @@ import { Overlay } from '@angular/cdk/overlay';
   styleUrls: ['./school-table.component.scss']
 })
 export class SchoolTableComponent implements OnInit {
-  displayedColumns: string[] = ['srNo', 'name', 'code','Address','edit','delete'];
+  displayedColumns: string[] = ['srNo', 'name', 'code','address','edit','delete'];
   dataSource:any;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <mat-tab-group (selectedTabChange)="tabChanged($event)">
   <mat-tab label="Master"> 
 
@@ -7,6 +8,15 @@
       <form [formGroup]='bookForm' #formDirective="ngForm" (ngSubmit)='submit(bookForm,formDirective)'>
         <mat-form-field class="example-full-width formFieldAlign">
           <input matInput formControlName='bookName' placeholder="Book Name">
+=======
+<mat-tab-group>
+  <mat-tab label="Master"> 
+    <div class="mat-card">
+      <mat-toolbar color='primary'><span style="color:#fff">Book Master</span></mat-toolbar>
+      <form [formGroup]='bookForm' (ngSubmit)='submit()'>
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput formControlName='bookName' placeholder="Class Name">
+>>>>>>> 9f702af8053372c1b4a056d2b934f5118f16061c
           <mat-error *ngIf='bookForm.get("bookName").hasError("required")'>Books Name is <strong>required</strong>
           </mat-error>
           <mat-error *ngIf='!bookForm.get("bookName").hasError("required") &&
@@ -14,7 +24,11 @@
         </mat-form-field>
     
         <mat-form-field class="example-full-width formFieldAlign">
+<<<<<<< HEAD
           <input matInput formControlName='code' placeholder="Book Code">
+=======
+          <input matInput formControlName='code' placeholder="Class Code">
+>>>>>>> 9f702af8053372c1b4a056d2b934f5118f16061c
           <mat-error *ngIf='bookForm.get("code").hasError("required")'>Books Name is <strong>required</strong></mat-error>
           <mat-error *ngIf='!bookForm.get("code").hasError("required") &&
           bookForm.get("code").hasError("pattern")'>Books Name <strong>only Charecters allow</strong></mat-error>
@@ -24,6 +38,7 @@
               class='submit-title'>Submit</span></button>
         </div>
       </form>
+<<<<<<< HEAD
     </div>    
   </mat-tab>
   <mat-tab label="Books List">
@@ -32,3 +47,12 @@
         </div>
       </mat-tab>
  </mat-tab-group>
+=======
+    </div>
+  </mat-tab>
+  <mat-tab label="Second"> Master Table </mat-tab>
+  <app-book-master></app-book-master>
+</mat-tab-group>
+
+
+>>>>>>> 9f702af8053372c1b4a056d2b934f5118f16061c
