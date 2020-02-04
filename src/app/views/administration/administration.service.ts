@@ -263,16 +263,18 @@ public deletePaymentTypeById(id:number):Observable<any>{
     return this.http.get<any>(environment.userApi+'/book/deletebyid/'+id)
   }
 
+
+  //Get Country Master
   public getAllCountry():Observable<any>{
     return this.http.get<any>(environment.userApi+'/country')
   }
 
-  public getAllState():Observable<any>{
-    return this.http.get<any>(environment.userApi+'/state')
+  public getAllState(id:number):Observable<any>{
+    return this.http.get<any>(environment.userApi+'/state/'+id)
   }
   
-  public getAllCity():Observable<any>{
-    return this.http.get<any>(environment.userApi+'/city')
+  public getAllCity(id:number):Observable<any>{
+    return this.http.get<any>(environment.userApi+'/city/'+id)
   }
   
 }

@@ -15,5 +15,13 @@ export class StudentManagementService {
  public saveAddmission(data:AdmissionDto):Observable<any>{
        return this.http.post<any>(environment.userApi+'/admission/saveadmission',data)
     }
+
+  public findAllStudents():Observable<any>{
+      return this.http.get<any>(environment.userApi+'/admission/findalladmission')
+  }
+
+  public getStudentyId(id:number):Observable<any>{
+    return this.http.get<any>(environment.userApi+'/admission/getbyidadmi/'+id)
+     }
   
 }

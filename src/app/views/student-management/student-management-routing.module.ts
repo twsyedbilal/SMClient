@@ -10,7 +10,7 @@ const routes: Routes = [
     component:CreateAdmissionComponent
   },
   {
-    path:'view-student',
+    path:'view-student/:id',
     component:ViewStudentComponent
   },
   {

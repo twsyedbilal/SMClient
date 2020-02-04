@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormGroupDirective, FormControl } from '@angular/forms';
 import { AdministrationService } from 'app/views/administration/administration.service';
 import { OccupationDto, NationalityDto, SocietyDto, CasteDto, SubCasteDto, MotherTongueDto, ClassDto, ReligionDto, BranchDto, SchoolTypeDto, SchoolDto } from 'app/views/administration/administration';
 import { AdmissionDto, AddressDto } from '../studentManagement';
 import { StudentManagementService } from '../student-management.service';
 import { DateFormat } from 'app/shared/utils/dateFormat';
+import { MatSnackBar } from '@angular/material';
+import { SnackBarMassageComponent } from 'app/views/snack-bar-massage/snack-bar-massage.component';
 
 @Component({
   selector: 'app-create-admission',
@@ -20,11 +22,14 @@ export class CreateAdmissionComponent implements OnInit {
   liveStatus:string[]=['Present','Absent'];
   state=[{name:'Maharashtra',code:2},{name:'Andhrapardesh',code:3}];
   cities=[{name:'Mumbai',code:45},{name:'Nanded',code:78}];
-  country=[{name:'India',code:42},{name:'Nepal',code:85},{name:'Bangladesh',code:69}];
+ // country=[{name:'India',code:42},{name:'Nepal',code:85},{name:'Bangladesh',code:69}];
   occupationData:OccupationDto[]=[];
   nationalityData:NationalityDto[]=[];
   society:SocietyDto[]=[];
   casteData:CasteDto[]=[];
+  countryData:any;
+  stateData:any;
+  cityData:any;
   subCasteData:SubCasteDto[]=[];
   motherTongueData:MotherTongueDto[]=[];
   classData:ClassDto[]=[];
@@ -33,10 +38,13 @@ export class CreateAdmissionComponent implements OnInit {
   schoolname:SchoolDto[]=[];
   schoolType:SchoolTypeDto[]=[];
   doB=new Date();
+
   dateFormat=new DateFormat();
   constructor(private fb:FormBuilder,
     private adminService:AdministrationService,
-    private _smService:StudentManagementService) {
+    private _smService:StudentManagementService,
+    private snackBar: MatSnackBar
+    ) {
 
       this.admissionDetails=new AdmissionDto();
       this.addressDetails=new AddressDto();
@@ -49,7 +57,7 @@ export class CreateAdmissionComponent implements OnInit {
       fatherName:[''],
       motherName:[''],
       guardianName:[''],
-      gender:['Female'],
+      gender:['female'],
       dob:[''],
       date:[],
       dobInWords:[''],
@@ -87,8 +95,38 @@ export class CreateAdmissionComponent implements OnInit {
       address:['']
   });*/
   this.getDropDownlistData();
+ 
+  this.studentDetailsForm.get('country').valueChanges
+  .subscribe(x=>{
+    console.log(x);
+    this.getStateData(x);
+  });
+
+this.studentDetailsForm.get('state').valueChanges
+.subscribe(x=>{
+  console.log(x);
+this.getCity(x);
+});
+
 }
 
+getStateData(id:number){
+  console.log(id);
+  this.adminService.getAllState(id)
+  .subscribe(res=>{
+    console.log(res);
+    this.stateData=res.data;
+  });
+}
+
+
+getCity(id:number){
+this.adminService.getAllCity(id)
+.subscribe(res=>{
+  console.log(res);
+  this.cityData=res.data;
+  });
+} 
 
   getDropDownlistData(){
   this.adminService.getAllClassData().subscribe(res=>{this.classData=res.data;});
@@ -101,12 +139,24 @@ export class CreateAdmissionComponent implements OnInit {
   this.adminService.getAllMT().subscribe(res=>{this.motherTongueData=res.data;});
   this.adminService.loadSchoolList().subscribe(res=>{this.schoolname=res.data});
   this.adminService.getAllSchoolType().subscribe(res=>{this.schoolType=res.data});  
-  this.adminService.getAllCountry().subscribe(res=>{console.log(res);})  
-  this.adminService.getAllCity().subscribe(res=>{console.log(res)})
-  this.adminService.getAllState().subscribe(res=>{console.log(res)})
+  this.adminService.getAllCountry().subscribe(res=>{console.log(res); this.countryData=res.data});  
 }
 
-  addmissionDetails(){
+  addmissionDetails(data: FormGroup, formDirective: FormGroupDirective): void{
+      if(this.studentDetailsForm.invalid){
+        this.snackBar.openFromComponent(SnackBarMassageComponent, {
+          data: {
+            message: 'Enter Field required',
+            icon: 'error_outline',
+           },
+           duration:3000
+        });
+      
+      
+      }
+      else{
+
+      
     let dob:any=this.dateFormat.getYYMMDD(this.studentDetailsForm.get('dob').value); 
    // let yr=this.dateFormat.getYYMMDD(this.studentDetailsForm.get('date').value);    
     console.log(dob);
@@ -151,11 +201,21 @@ export class CreateAdmissionComponent implements OnInit {
     this.admissionDetails.address.push(this.addressDetails);
     this._smService.saveAddmission(this.admissionDetails)
     .subscribe(res=>{
-      console.log(res);
+        if(res.code==201){
+          this.snackBar.openFromComponent(SnackBarMassageComponent, {
+            data: {
+              message: 'Successfully Created',
+              icon: 'check_circle_outline',
+             },
+             duration:3000
+          });
+         formDirective.resetForm();
+         this.studentDetailsForm.reset();
+        }
     });
     console.log(this.admissionDetails);
  
-  
+  }
   }
 
 

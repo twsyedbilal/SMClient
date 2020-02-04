@@ -1,5 +1,7 @@
 <mat-card>
-  <form [formGroup]='studentDetailsForm'  (ngSubmit)='addmissionDetails()'>
+  <mat-toolbar color='primary'><span style="color:#fff">Student Admission</span></mat-toolbar>
+ 
+  <form [formGroup]='studentDetailsForm' #formDirective="ngForm" (ngSubmit)='addmissionDetails(studentDetailsForm,formDirective)'>
    
     <div fxLayout="column">
    <div fxLayoutAlign="space-evenly center">
@@ -115,7 +117,7 @@
   <mat-form-field class="example-full-width " fxFlex='30'>
      <mat-label>Class Name</mat-label>
      <mat-select formControlName='className'>
-       <mat-option *ngFor='let x of classData' [value]='x.code'>
+       <mat-option *ngFor='let x of classData' [value]='x.id'>
          {{x.className}}
        </mat-option>
      </mat-select>
@@ -126,7 +128,7 @@
 <mat-form-field class="example-full-width " fxFlex='30'>
  <mat-label>School</mat-label>
  <mat-select formControlName='schoolId'>
-   <mat-option *ngFor='let x of schoolname' [value]='x.schoolCode'>
+   <mat-option *ngFor='let x of schoolname' [value]='x.id'>
      {{x.schoolName}}
    </mat-option>
  </mat-select>
@@ -135,7 +137,7 @@
 <mat-form-field class="example-full-width " fxFlex='30'>
  <mat-label>School Type</mat-label>
  <mat-select formControlName='schoolTypeId'>
-   <mat-option *ngFor='let x of schoolType' [value]='x.code'>
+   <mat-option *ngFor='let x of schoolType' [value]='x.id'>
      {{x.name}}
    </mat-option>
  </mat-select>
@@ -147,7 +149,7 @@
   <mat-form-field fxFlex='30'>
      <mat-label>Religion Name</mat-label>
      <mat-select formControlName='religionName'>
-       <mat-option *ngFor='let x of religionData' [value]='x.code'>
+       <mat-option *ngFor='let x of religionData' [value]='x.id'>
          {{x.name}}
        </mat-option>
      </mat-select>
@@ -156,7 +158,7 @@
    <mat-form-field fxFlex='30'>
      <mat-label>Caste Name</mat-label>
      <mat-select formControlName='casteName'>
-       <mat-option *ngFor='let x of casteData' [value]='x.code'>
+       <mat-option *ngFor='let x of casteData' [value]='x.id'>
          {{x.name}}
        </mat-option>
      </mat-select>
@@ -168,7 +170,7 @@
 <mat-form-field fxFlex='30'>
   <mat-label>SubCaste Name</mat-label>
      <mat-select formControlName='subCaste'>
-       <mat-option *ngFor='let x of subCasteData' [value]='x.code'>
+       <mat-option *ngFor='let x of subCasteData' [value]='x.id'>
          {{x.name}}
        </mat-option>
      </mat-select>
@@ -178,7 +180,7 @@
    <mat-form-field fxFlex='30'>
      <mat-label>Occupation</mat-label>
      <mat-select formControlName='occupation'>
-       <mat-option *ngFor='let x of occupationData' [value]='x.code'>
+       <mat-option *ngFor='let x of occupationData' [value]='x.id'>
          {{x.name}}
        </mat-option>
      </mat-select>
@@ -191,7 +193,7 @@
 <mat-form-field fxFlex='30'>
    <mat-label>Society</mat-label>
      <mat-select formControlName='society'>
-       <mat-option *ngFor='let x of society' [value]='x.code'>
+       <mat-option *ngFor='let x of society' [value]='x.id'>
          {{x.name}}
        </mat-option>
      </mat-select>
@@ -200,7 +202,7 @@
    <mat-form-field fxFlex='30'>
      <mat-label>Mother Tongue</mat-label>
      <mat-select formControlName='mothertongue'>
-       <mat-option *ngFor='let x of motherTongueData' [value]='x.code'>
+       <mat-option *ngFor='let x of motherTongueData' [value]='x.id'>
          {{x.name}}
        </mat-option>
      </mat-select>
@@ -213,7 +215,7 @@
 <mat-form-field fxFlex='30'>
  <mat-label>Nationality</mat-label>
  <mat-select formControlName='nationality'>
-   <mat-option *ngFor='let x of nationalityData' [value]='x.code'>
+   <mat-option *ngFor='let x of nationalityData' [value]='x.id'>
      {{x.name}}
    </mat-option>
  </mat-select>
@@ -231,15 +233,15 @@
     <mat-form-field class="example-full-width" fxFlex='30'>
      <input matInput formControlName='pinCode' placeholder="PinCode" >
    </mat-form-field>
-  
+
    <mat-form-field fxFlex='30'>
-     <mat-label>City </mat-label>
-        <mat-select formControlName='admissionCity'>
-          <mat-option *ngFor='let x of cities' [value]='x.code'>
-            {{x.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <mat-label>country</mat-label>
+       <mat-select formControlName='country'>
+         <mat-option *ngFor='let x of countryData' [value]='x.id'>
+           {{x.countryName}}
+         </mat-option>
+       </mat-select>
+     </mat-form-field>
   </div>
 
  <div fxLayoutAlign="space-evenly center" fxLayoutAlign="space-evenly center">
@@ -247,20 +249,21 @@
    <mat-form-field fxFlex='30'>
      <mat-label>State </mat-label>
         <mat-select formControlName='state'>
-          <mat-option *ngFor='let x of state' [value]='x.code'>
+          <mat-option *ngFor='let x of stateData' [value]='x.id'>
             {{x.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
       
       <mat-form-field fxFlex='30'>
-       <mat-label>country</mat-label>
-          <mat-select formControlName='country'>
-            <mat-option *ngFor='let x of country' [value]='x.code'>
-              {{x.name}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <mat-label>City </mat-label>
+           <mat-select formControlName='admissionCity'>
+             <mat-option *ngFor='let x of cityData' [value]='x.id'>
+               {{x.name}}
+             </mat-option>
+           </mat-select>
+         </mat-form-field>
+         
 </div> 
 
 

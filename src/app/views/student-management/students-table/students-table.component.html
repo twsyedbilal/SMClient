@@ -1,3 +1,74 @@
-<p>
-  students-table works!
-</p>
+<mat-card>
+  <div class='table-card'>
+    <div style="width: 30%;float: right;">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search..">
+      </mat-form-field>
+      
+    </div>
+    <mat-toolbar color='primary'><span style="color:#fff">Student List</span></mat-toolbar>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="srNo">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element;let i=index">{{i+1}}</td>
+      </ng-container>
+
+      
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Student Name</th>
+        <td mat-cell *matCellDef="let element">{{element.studentsName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fatherName">
+        <th mat-header-cell *matHeaderCellDef>Father Name</th>
+        <td mat-cell *matCellDef="let element">{{element.fathersName}}</td>
+      </ng-container>
+
+      
+      <ng-container matColumnDef="regNo">
+        <th mat-header-cell *matHeaderCellDef>Registration No</th>
+        <td mat-cell *matCellDef="let element">{{element.studentRegNo}}</td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef>Gender</th>
+        <td mat-cell *matCellDef="let element">{{element.gender}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="class">
+        <th mat-header-cell *matHeaderCellDef>Class Name</th>
+        <td mat-cell *matCellDef="let element">{{element.classOffered.className}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef class="icon-align "> Edit</th>
+        <td mat-cell *matCellDef="let element" class="icon-align">
+          <i class="material-icons icon_edit_color"  matTooltip="Edit">create</i>
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef class="icon-align ">View</th>
+        <td mat-cell *matCellDef="let element" class="icon-align">
+          <i class="material-icons icon-btn" matTooltip='Student Details' [routerLink]="['/student-managment/view-student/'+element.id]" style="color:#008080;cursor: pointer;margin-top: 7px;" color="primary">visibility</i>
+        </td>
+      </ng-container>
+  
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef >Delete</th>
+        <td mat-cell *matCellDef="let element" >
+          <i class="material-icons icon_delte_color"  matTooltip="Delete"
+            style="text-align: center;"> delete_outline </i>
+        </td>
+      </ng-container>
+  
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</mat-card>
