@@ -104,8 +104,13 @@ export class NavigationService {
         { 
           name: "Student Admission", 
           state: "admission"
-         }  
-      ]
+         },
+         { 
+          name: "Student List", 
+          state: "all-Students"
+         },
+      
+       ]
     },
   
     {

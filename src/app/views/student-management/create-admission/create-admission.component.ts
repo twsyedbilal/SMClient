@@ -71,16 +71,21 @@ export class CreateAdmissionComponent implements OnInit {
       nationality:[''],
       mothertongue:[''],
       schoolId:[''],
-      schoolTypeId:['']
+      schoolTypeId:[''],
+      pinCode:[''],
+      admissionCity:[''],
+      state:[''],
+      country:[''],
+      address:['']
   });
 
-  this.addressForm=this.fb.group({
+ /* this.addressForm=this.fb.group({
       pinCode:[''],
       city:[''],
       state:[''],
       country:[''],
       address:['']
-  });
+  });*/
   this.getDropDownlistData();
 }
 
@@ -97,35 +102,24 @@ export class CreateAdmissionComponent implements OnInit {
   this.adminService.loadSchoolList().subscribe(res=>{this.schoolname=res.data});
   this.adminService.getAllSchoolType().subscribe(res=>{this.schoolType=res.data});  
   this.adminService.getAllCountry().subscribe(res=>{console.log(res);})  
+  this.adminService.getAllCity().subscribe(res=>{console.log(res)})
+  this.adminService.getAllState().subscribe(res=>{console.log(res)})
 }
 
   addmissionDetails(){
-    let dob:any=this.dateFormat.getYYMMDD(this.studentDetailsForm.get('dob').value);    
+    let dob:any=this.dateFormat.getYYMMDD(this.studentDetailsForm.get('dob').value); 
+   // let yr=this.dateFormat.getYYMMDD(this.studentDetailsForm.get('date').value);    
     console.log(dob);
-    /*
-      let month = birthdate.getMonth();
-      console.log(month);
-      let birthDate :string ='';
-      if(month>10){
-        birthDate=birthdate.getDate()+"/"+(month+1)+"/"+birthdate.getFullYear();
-      }
-      if(month<10){
-        let mnth="0"+(month+1);
-        birthDate=birthdate.getDate()+"/"+mnth+"/"+birthdate.getFullYear();
-      }
-      console.log(birthDate);
+  //  console.log(yr);
    
-    */
-
-
-  this.admissionDetails.studentsName=this.studentDetailsForm.get('studentName').value;
-     this.admissionDetails.surName=this.studentDetailsForm.get('surname').value;
+    this.admissionDetails.studentsName=this.studentDetailsForm.get('studentName').value;
+    this.admissionDetails.surName=this.studentDetailsForm.get('surname').value;
     this.admissionDetails.fathersName=this.studentDetailsForm.get('fatherName').value;
     this.admissionDetails.mothersName=this.studentDetailsForm.get('motherName').value;
     this.admissionDetails.guardiansName=this.studentDetailsForm.get('guardianName').value;
     this.admissionDetails.gender=this.studentDetailsForm.get('gender').value;
     this.admissionDetails.dateOfBirth=dob;
-    this.admissionDetails.date=this.studentDetailsForm.get('date').value;
+  //  this.admissionDetails.date=yr;
     this.admissionDetails.dateOfBirthInWords=this.studentDetailsForm.get('dobInWords').value;
     this.admissionDetails.placeOfBirth=this.studentDetailsForm.get('placeOfBirth').value; 
     this.admissionDetails.uidNo=this.studentDetailsForm.get('uID').value;
@@ -146,12 +140,26 @@ export class CreateAdmissionComponent implements OnInit {
     this.admissionDetails.mothertongId=this.studentDetailsForm.get('mothertongue').value;
     this.admissionDetails.schoolId=this.studentDetailsForm.get('schoolId').value;
     this.admissionDetails.schoolTypeId=this.studentDetailsForm.get('schoolTypeId').value; 
-      
-      console.log(this.admissionDetails);
+    this.addressDetails.pincode=this.studentDetailsForm.get('pinCode').value;
+    this.addressDetails.cityId=this.studentDetailsForm.get('admissionCity').value;
+    this.addressDetails.stateId=this.studentDetailsForm.get('state').value;
+    this.addressDetails.countryId=this.studentDetailsForm.get('country').value;
+    this.addressDetails.detailAddress=this.studentDetailsForm.get('address').value;
+    console.log(this.admissionDetails);
+  
+    console.log('click');
+    this.admissionDetails.address.push(this.addressDetails);
+    this._smService.saveAddmission(this.admissionDetails)
+    .subscribe(res=>{
+      console.log(res);
+    });
+    console.log(this.admissionDetails);
+ 
+  
   }
 
 
-  addressDetail(){
+ /* addressDetail(){
 
   this.addressDetails.pincode=this.addressForm.get('pinCode').value;
   this.addressDetails.cityId=this.addressForm.get('city').value;
@@ -161,17 +169,7 @@ export class CreateAdmissionComponent implements OnInit {
 
     console.log(this.addressDetails);
   }
-
-  submitAddmissionForm(){
-    console.log('click');
-    this.admissionDetails.address.push(this.addressDetails);
-    this._smService.saveAddmission(this.admissionDetails)
-    .subscribe(res=>{
-      console.log(res);
-    });
-    console.log(this.admissionDetails);
-    
-  }
+*/
 
 
 }

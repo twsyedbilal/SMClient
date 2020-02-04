@@ -12,11 +12,13 @@ import {MatSelectModule} from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentsTableComponent } from './students-table/students-table.component';
+import { ViewStudentComponent } from './view-student/view-student.component';
 
 @NgModule({
   declarations: [
     CreateAdmissionComponent,
-    StudentsTableComponent
+    StudentsTableComponent,
+    ViewStudentComponent
   ],
   imports: [
     CommonModule,

@@ -122,7 +122,7 @@ export class AdministrationService {
   
   
   public deleteSubCasteById(id:number):Observable<any>{
-    return this.http.delete<any>(environment.userApi+'/subcaste/deleteid/'+id)
+    return this.http.get<any>(environment.userApi+'/subcaste/deleteid/'+id)
 }
   
   
@@ -265,6 +265,14 @@ public deletePaymentTypeById(id:number):Observable<any>{
 
   public getAllCountry():Observable<any>{
     return this.http.get<any>(environment.userApi+'/country')
+  }
+
+  public getAllState():Observable<any>{
+    return this.http.get<any>(environment.userApi+'/state')
+  }
+  
+  public getAllCity():Observable<any>{
+    return this.http.get<any>(environment.userApi+'/city')
   }
   
 }
