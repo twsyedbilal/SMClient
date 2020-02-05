@@ -1,5 +1,5 @@
 
-<div class="mat-card" *ngIf='formData !=null || formData !=Undefined '>
+<div class="mat-card" *ngIf='formData !=null'>
   <mat-toolbar  color='primary'><span style="color:#fff">Update {{data.status}} Master</span> </mat-toolbar>
 
   <form [formGroup]='form'  *ngIf='form !=null' #formDirective="ngForm" (ngSubmit)='updateForm(form,formDirective)'>

@@ -63,56 +63,57 @@ constructor(public dialogRef: MatDialogRef<DialogComponent>,
           break;
 
         case 'Caste':
-          console.log('Caste')
+          console.log('Caste');
           this.service.getCasteById(this.data.id).subscribe(res => { this.formData = res.data; console.log(this.formData); });
           this.loadData();
           break;
          
-          case 'subCaste':
-            console.log('subCaste')
-            this.service.getSubCasteById(this.data.id).subscribe(res => { this.formData = res.data; console.log(this.formData); });
-            break;
-  
-
         case 'Mother Tongue':
-          console.log('MT')
+          console.log('MT');
           this.service.getMTById(this.data.id).subscribe(res => { this.formData = res.data; console.log(this.formData); });
           this.loadData();
           break;
 
         case 'Branch':
-          console.log('Branch')
+          console.log('Branch');
           this.service.getBranchById(this.data.id).subscribe(res => { this.formData = res.data; console.log(this.formData); });
           this.loadData();
           break;
 
         case 'Occupation':
-          console.log('Occupation')
+          console.log('Occupation');
           this.service.getOccupationDataById(this.data.id).subscribe(res => { this.formData = res.data; console.log(this.formData); });
           this.loadData();
           break;
 
         case 'Society':
-          console.log('Society')
+          console.log('Society');
           this.service.getSocietyById(this.data.id).subscribe(res => { this.formData = res.data; console.log(this.formData); });
           this.loadData();
           break;
 
         case 'Nationality':
-          console.log('nationality')
+          console.log('nationality');
           this.service.getNationalityById(this.data.id).subscribe(res => { this.formData = res.data; console.log(this.formData); });
           this.loadData();
           break;
+
+        
+        case 'subCaste':
+            console.log('subCaste');
+            this.service.getSubCasteById(this.data.id).subscribe(res => { this.formData = res.data; console.log(this.formData); });
+           this.loadData();
+            break;
+  
 
       }
     }
   }
 
-loadData(){
-  setTimeout(()=>{
-    this.loadForm();
- },1500)
-
+      loadData(){
+        setTimeout(()=>{
+          this.loadForm();
+      },1000);
 }
   
 
@@ -120,8 +121,8 @@ loadData(){
 loadForm(){
    
   this.form=this.fb.group({
-    name:[this.formData.name,[Validators.required,Validators.pattern(this.validation.onlyAlphabet)]],
-    code:[this.formData.code,[Validators.required,Validators.pattern(this.validation.onlyNumber)]]
+      name:[this.formData.name,[Validators.required,Validators.pattern(this.validation.onlyAlphabet)]],
+      code:[this.formData.code,[Validators.required,Validators.pattern(this.validation.onlyNumber)]]
   });
 
   }

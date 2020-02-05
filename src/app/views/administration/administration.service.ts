@@ -117,7 +117,7 @@ export class AdministrationService {
   
   
   public getSubCasteById(id:number):Observable<any>{
-    return this.http.get<any>(environment.userApi+'/subcaste/getbyidsubcaste/'+id)
+    return this.http.get<any>(environment.userApi+'/subcaste/getbyidsc/'+id)
   }
   
   
