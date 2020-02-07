@@ -14,12 +14,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { StudentsTableComponent } from './students-table/students-table.component';
 import { ViewStudentComponent } from './view-student/view-student.component';
 import {MatTableModule} from '@angular/material/table';
+import { StudentAdmissionFormComponent } from './student-admission-form/student-admission-form.component';
 
 @NgModule({
   declarations: [
     CreateAdmissionComponent,
     StudentsTableComponent,
-    ViewStudentComponent
+    ViewStudentComponent,
+    StudentAdmissionFormComponent
   ],
   imports: [
     CommonModule,

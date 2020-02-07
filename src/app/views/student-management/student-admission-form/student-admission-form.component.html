@@ -1,0 +1,305 @@
+<!--<button mat-raised-button (click)="isOptional = !isOptional">
+  {{!isOptional ? 'Enable optional steps' : 'Disable optional steps'}}
+</button>-->
+
+<mat-horizontal-stepper linear #stepper [selectedIndex]="this.selectedIndex"
+ (selectionChange)="selectionChange($event)">
+  <mat-step [stepControl]="firstFormGroup">
+<mat-card>
+    <form  [formGroup]='studentDetailsForm'>
+      <ng-template matStepLabel>Student Details</ng-template>
+
+      <div fxLayout="column">
+        <div fxLayoutAlign="space-evenly center">
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          <input matInput formControlName='surname' placeholder="SurName" >
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          <input matInput formControlName='studentName' placeholder="Students Name">
+        </mat-form-field>
+     </div>
+     
+      <div fxLayoutAlign="space-evenly center">
+        <mat-form-field class="example-full-width " fxFlex='30'>
+          <input matInput formControlName='fatherName' placeholder="Fathers Name">
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width " fxFlex='30'>
+          <input matInput formControlName='motherName' placeholder="Mothers Name">
+        </mat-form-field>
+     </div>
+      
+     <div fxLayoutAlign="space-evenly center">
+     
+      <mat-form-field class="example-full-width" fxFlex='30'>
+         <input matInput  formControlName='guardianName' placeholder="Guardians Name" >
+        </mat-form-field>
+     
+          <mat-radio-group formControlName='gender' class="example-full-width " fxFlex='30' >
+            <mat-radio-button   value="female">Female</mat-radio-button>
+     
+            <mat-radio-button  value="male" style="margin-left:2%">Male</mat-radio-button>
+          </mat-radio-group>
+     </div> 
+     
+     <div fxLayoutAlign="space-evenly center">
+        <mat-form-field class="example-full-width" fxFlex='30' >
+            <input matInput formControlName='dob' [matDatepicker]="picker" placeholder="Date of Birth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          
+     
+        <mat-form-field class="example-full-width" fxFlex='30' >
+          <input matInput formControlName='dobInWords' placeholder="Date Of Birth In Words">
+        </mat-form-field>
+     </div>
+     
+     <div fxLayoutAlign="space-evenly center">
+     
+     <mat-form-field class="example-full-width" fxFlex='30' >
+          <input matInput formControlName='placeOfBirth' placeholder="placeOfBirth">
+        </mat-form-field>
+
+         
+   <mat-form-field class="example-full-width" fxFlex='30'>
+    <input matInput formControlName='uID' placeholder="UID No" >
+  </mat-form-field>
+</div>
+
+
+<div fxLayoutAlign="space-evenly center">
+  <mat-form-field class="example-full-width" fxFlex='30' >
+       <input matInput formControlName='idNo' placeholder="ID No">
+     </mat-form-field>
+  
+     <mat-form-field class="example-full-width" fxFlex='30'>
+       <input matInput  formControlName='regNo' placeholder="Student Reg No" >
+     </mat-form-field>
+  </div>
+  
+  <div fxLayoutAlign="space-evenly center">
+    <mat-form-field class="example-full-width" fxFlex='30'>
+     <input matInput formControlName='income' placeholder="Income">
+       </mat-form-field>
+    
+       
+       <mat-form-field class="example-full-width" fxFlex='30'>
+         <input formControlName='contactNo' matInput placeholder="Contact No">
+       </mat-form-field>
+    </div>
+      
+
+</div>     
+  </form>
+<div>
+  <button style="float:right;" color="primary" mat-raised-button  type="submit" (click)="getadmissionDetails(1)">Save</button>
+</div>
+</mat-card>    
+  </mat-step>
+
+  <!--Stepper 2-->
+
+  <mat-step [stepControl]="addressForm">
+    <mat-card>
+    <form [formGroup]='addressForm'>
+      <ng-template matStepLabel>Address Details</ng-template>
+    <div fxLayout="column">
+        
+
+   <div fxLayoutAlign="space-evenly center" fxLayoutAlign="space-evenly center">
+    <mat-form-field class="example-full-width" fxFlex='30'>
+     <input matInput formControlName='pinCode' placeholder="PinCode" >
+   </mat-form-field>
+
+   <mat-form-field fxFlex='30'>
+    <mat-label>country</mat-label>
+       <mat-select formControlName='country'>
+         <mat-option *ngFor='let x of countryData' [value]='x.id'>
+           {{x.countryName}}
+         </mat-option>
+       </mat-select>
+     </mat-form-field>
+  </div>
+
+ <div fxLayoutAlign="space-evenly center" fxLayoutAlign="space-evenly center">
+
+   <mat-form-field fxFlex='30'>
+     <mat-label>State </mat-label>
+        <mat-select formControlName='state'>
+          <mat-option *ngFor='let x of stateData' [value]='x.id'>
+            {{x.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field fxFlex='30'>
+        <mat-label>City </mat-label>
+           <mat-select formControlName='city'>
+             <mat-option *ngFor='let x of cityData' [value]='x.id'>
+               {{x.name}}
+             </mat-option>
+           </mat-select>
+         </mat-form-field>
+  </div> 
+
+
+<div fxLayoutAlign="space-evenly center" fxLayoutAlign="space-evenly center">
+     <mat-form-field class="example-full-width" fxFlex='74'>
+     <input matInput formControlName='address' placeholder="Address" >
+   </mat-form-field>
+</div>
+</div>
+     
+      <div>
+        <button style="float:right;" color="primary" mat-raised-button  (click)='getAddressDetails(2)'>Save</button>
+      </div>
+    </form>
+  </mat-card>
+  </mat-step>
+  
+  <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
+    <form [formGroup]='releventForm'>
+      <ng-template matStepLabel>Relevent Details</ng-template>
+      <div fxLayout="column">
+          
+        <div fxLayoutAlign="space-evenly center">
+        
+          <mat-form-field class="example-full-width " fxFlex='30'>
+            <input matInput formControlName='identityByMark' placeholder="Identity By Mark Or AadharNo;">
+          </mat-form-field>
+        
+          
+         <mat-form-field class="example-full-width " fxFlex='30'>
+            <mat-label>Class Name</mat-label>
+            <mat-select formControlName='className'>
+              <mat-option *ngFor='let x of classData' [value]='x.id'>
+                {{x.className}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>     
+        
+        <div fxLayoutAlign="space-evenly center">
+        <mat-form-field class="example-full-width " fxFlex='30'>
+        <mat-label>School</mat-label>
+        <mat-select formControlName='schoolId'>
+          <mat-option *ngFor='let x of schoolname' [value]='x.id'>
+            {{x.schoolName}}
+          </mat-option>
+        </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field class="example-full-width " fxFlex='30'>
+        <mat-label>School Type</mat-label>
+        <mat-select formControlName='schoolTypeId'>
+          <mat-option *ngFor='let x of schoolType' [value]='x.id'>
+            {{x.name}}
+          </mat-option>
+        </mat-select>
+        </mat-form-field>
+        
+        </div>
+        
+        <div fxLayoutAlign="space-evenly center">
+         <mat-form-field fxFlex='30'>
+            <mat-label>Religion Name</mat-label>
+            <mat-select formControlName='religionName'>
+              <mat-option *ngFor='let x of religionData' [value]='x.id'>
+                {{x.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+           
+          <mat-form-field fxFlex='30'>
+            <mat-label>Caste Name</mat-label>
+            <mat-select formControlName='casteName'>
+              <mat-option *ngFor='let x of casteData' [value]='x.id'>
+                {{x.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>     
+        
+          
+        <div fxLayoutAlign="space-evenly center">
+        <mat-form-field fxFlex='30'>
+         <mat-label>SubCaste Name</mat-label>
+            <mat-select formControlName='subCaste'>
+              <mat-option *ngFor='let x of subCasteData' [value]='x.id'>
+                {{x.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+        
+          <mat-form-field fxFlex='30'>
+            <mat-label>Occupation</mat-label>
+            <mat-select formControlName='occupation'>
+              <mat-option *ngFor='let x of occupationData' [value]='x.id'>
+                {{x.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+        </div>
+        
+        
+        <div fxLayoutAlign="space-evenly center">
+        <mat-form-field fxFlex='30'>
+          <mat-label>Society</mat-label>
+            <mat-select formControlName='society'>
+              <mat-option *ngFor='let x of society' [value]='x.id'>
+                {{x.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        
+          <mat-form-field fxFlex='30'>
+            <mat-label>Mother Tongue</mat-label>
+            <mat-select formControlName='mothertongue'>
+              <mat-option *ngFor='let x of motherTongueData' [value]='x.id'>
+                {{x.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+              
+        
+        </div>      
+        
+        <div fxLayoutAlign="space-evenly center">
+        <mat-form-field fxFlex='30'>
+        <mat-label>Nationality</mat-label>
+        <mat-select formControlName='nationality'>
+          <mat-option *ngFor='let x of nationalityData' [value]='x.id'>
+            {{x.name}}
+          </mat-option>
+        </mat-select>
+        </mat-form-field>
+     </div>
+      </div>
+  <div>
+        <button style="float:right;" color="primary" mat-raised-button  (click)='getreleventDetails(3)'>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
+    <form >
+      <ng-template matStepLabel>Upload Document</ng-template>
+      
+      <div>
+        <button style="float:right;" color="primary" mat-raised-button  (click)='submitDocs(4)'>save</button>
+      </div>
+    </form>
+  </mat-step>
+  
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

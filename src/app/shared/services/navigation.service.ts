@@ -48,6 +48,24 @@ export class NavigationService {
       state: "others/users"
     },
     {
+      name: "Students Managment",
+      type: "dropDown",
+      icon: "format_list_bulleted",
+      state: "student-managment",
+      sub: [
+        { 
+          name: "Student Admission", 
+          state: "student-Admission"
+         },
+         { 
+          name: "Student List", 
+          state: "all-Students"
+         },
+      
+       ]
+    },
+  
+    {
       name: "Account",
       type: "dropDown",
       icon: "person_add",
@@ -95,24 +113,7 @@ export class NavigationService {
          }
       ]
     },
-    {
-      name: "Students Managment",
-      type: "dropDown",
-      icon: "format_list_bulleted",
-      state: "student-managment",
-      sub: [
-        { 
-          name: "Student Admission", 
-          state: "admission"
-         },
-         { 
-          name: "Student List", 
-          state: "all-Students"
-         },
-      
-       ]
-    },
-  
+   
     {
       name: "DOC",
       type: "extLink",

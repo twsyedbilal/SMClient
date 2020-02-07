@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CreateAdmissionComponent } from './create-admission/create-admission.component';
 import { ViewStudentComponent } from './view-student/view-student.component';
 import { StudentsTableComponent } from './students-table/students-table.component';
+import { StudentAdmissionFormComponent } from './student-admission-form/student-admission-form.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path:'all-Students',
     component:StudentsTableComponent
+  },
+  {
+    path:'student-Admission',
+    component:StudentAdmissionFormComponent
   }
 ];
 
