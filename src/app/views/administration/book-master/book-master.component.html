@@ -14,7 +14,7 @@
         </mat-form-field>
     
         <mat-form-field class="example-full-width formFieldAlign">
-          <input matInput formControlName='code' placeholder="Class Code">
+          <input matInput formControlName='code' placeholder="Book Code">
           <mat-error *ngIf='bookForm.get("code").hasError("required")'>Books Name is <strong>required</strong></mat-error>
           <mat-error *ngIf='!bookForm.get("code").hasError("required") &&
           bookForm.get("code").hasError("pattern")'>Books Name <strong>only Charecters allow</strong></mat-error>

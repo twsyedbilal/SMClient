@@ -38,16 +38,16 @@ export class SchoolTypeMasterComponent implements OnInit {
       .subscribe(res=>{
         console.log(res);
         this.schoolType=this.fb.group({
-          schoolTypeName:[res.data.schoolTypeName,[Validators.required,Validators.pattern(this.validation.onlyAlphabet)]],
-          schoolCode:[res.data.code,[Validators.required,Validators.pattern(this.validation.onlyNumber)]]
+          schoolTypeName:[res.data.schoolTypeName,[Validators.required]],
+          schoolCode:[res.data.code,[Validators.required]]
         });
        
       })
     }
       else{
        this.schoolType=this.fb.group({
-      schoolTypeName:['',[Validators.required,Validators.pattern(this.validation.onlyAlphabet)]],
-      schoolCode:['',[Validators.required,Validators.pattern(this.validation.onlyNumber)]]
+      schoolTypeName:['',[Validators.required]],
+      schoolCode:['',[Validators.required]]
     });
   }
 }

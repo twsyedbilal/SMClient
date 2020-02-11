@@ -59,9 +59,14 @@ export const SessionsRoutes: Routes = [
         component: Signin4Component,
         data: { title: "Signin4" }
       },
+      // {
+      //   path: "signin",
+      //   component: SigninComponent,
+      //   data: { title: "Signin" }
+      // },
       {
         path: "signin",
-        component: SigninComponent,
+        component: Signin4Component,
         data: { title: "Signin" }
       },
       {

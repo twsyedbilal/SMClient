@@ -23,8 +23,8 @@ export class SubCasteMasterComponent implements OnInit {
   ngOnInit() {
     this.subCasteform=this.fb.group({
 
-        name:['',[Validators.required,Validators.pattern(this.validation.onlyAlphabet)]],
-        code:['',[Validators.required,Validators.pattern(this.validation.onlyNumber)]]
+        name:['',[Validators.required]],
+        code:['',[Validators.required]]
       });
   }
 

@@ -19,7 +19,7 @@
       <mat-error *ngIf='classForm.get("cCode").hasError("required")'>Class Code is <strong>Required</strong></mat-error>
       <mat-error *ngIf='!classForm.get("cCode").hasError("required")
              && classForm.get("cCode").hasError("pattern")'>
-             Class Code <strong>only Numbers allow</strong></mat-error>
+             Class Code <strong>only Alpha Numaric allow</strong></mat-error>
     </mat-form-field>
     
       

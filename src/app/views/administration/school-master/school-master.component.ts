@@ -22,8 +22,8 @@ export class SchoolMasterComponent implements OnInit {
 
   ngOnInit() {
   this.schoolForm=this.fb.group({
-    schoolName:['',[Validators.required,Validators.pattern(this.validation.onlyAlphabet)]],
-    schoolCode:['',[Validators.required,Validators.pattern(this.validation.onlyNumber)]],
+    schoolName:['',[Validators.required]],
+    schoolCode:['',[Validators.required]],
     schoolAddress:['',[Validators.required]]
  
      });

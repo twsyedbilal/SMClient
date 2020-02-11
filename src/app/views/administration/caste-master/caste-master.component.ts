@@ -23,8 +23,8 @@ export class CasteMasterComponent implements OnInit {
 
   ngOnInit() {
   this.casteForm=this.fb.group({
-    casteName:['',[Validators.required,Validators.pattern(this.validation.onlyAlphabet)]],
-    code:['',[Validators.required,Validators.pattern(this.validation.onlyNumber)]]
+    casteName:['',[Validators.required]],
+    code:['',[Validators.required]]
     });
   }
 

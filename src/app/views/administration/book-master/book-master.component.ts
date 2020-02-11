@@ -22,8 +22,8 @@ export class BookMasterComponent implements OnInit {
 
   ngOnInit() {
     this.bookForm = this.fb.group({
-      bookName: ['', [Validators.required, Validators.pattern(this.validation.onlyAlphabet)]],
-      code: ['', [Validators.required, Validators.pattern(this.validation.onlyNumber)]]
+      bookName: ['', [Validators.required]],
+      code: ['', [Validators.required]]
     });
 
   }

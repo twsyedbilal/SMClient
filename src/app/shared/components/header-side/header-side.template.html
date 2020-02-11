@@ -20,24 +20,24 @@
 
   <span fxFlex></span>
   <!-- Language Switcher -->
-  <button mat-button [matMenuTriggerFor]="menu">
+  <!-- <button mat-button [matMenuTriggerFor]="menu">
     <span class="flag-icon {{currentLang.flag}} mr-05"></span>
     <span>{{currentLang.name}}</span>
-  </button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item *ngFor="let lang of availableLangs" (click)="setLang(lang)">
+  </button> -->
+<!-- <mat-menu #menu="matMenu"> -->
+  <!-- <button mat-menu-item *ngFor="let lang of availableLangs" (click)="setLang(lang)">
         <span class="flag-icon mr-05 {{lang.flag}}"></span>
         <span>{{lang.name}}</span>
-  </button>
-</mat-menu>
+  </button> -->
+<!-- </mat-menu> -->
 
 
-  <egret-search-input-over placeholder="Country (e.g. US)" resultPage="/search">
-  </egret-search-input-over>
+  <!-- <egret-search-input-over placeholder="Country (e.g. US)" resultPage="/search">
+  </egret-search-input-over> -->
   <!-- Open "views/search-view/result-page.component" to understand how to subscribe to input field value -->
 
   <!-- Notification toggle button -->
-  <button
+  <!-- <button
     mat-icon-button
     matTooltip="Notifications"
     (click)="toggleNotific()"
@@ -46,14 +46,14 @@
   >
     <mat-icon>notifications</mat-icon>
     <span class="notification-number mat-bg-warn">3</span>
-  </button>
+  </button> -->
   <!-- Top left user menu -->
   <button
     mat-icon-button
     [matMenuTriggerFor]="accountMenu"
     class="topbar-button-right img-button"
   >
-    <img src="assets/images/face-7.jpg" alt="" />
+    <img src="assets/images/download.png" alt="" />
   </button>
 
   <mat-menu #accountMenu="matMenu">

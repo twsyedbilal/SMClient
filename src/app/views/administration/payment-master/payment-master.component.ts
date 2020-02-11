@@ -26,8 +26,8 @@ export class PaymentMasterComponent implements OnInit {
 //Payment Type Code
   ngOnInit() {
       this.paymentTypeForm = this.fb.group({
-        paymentType: ['', [Validators.required, Validators.pattern(this.validation.onlyAlphabet)]],
-        code: ['', [Validators.required, Validators.pattern(this.validation.onlyNumber)]]
+        paymentType: ['', [Validators.required]],
+        code: ['', [Validators.required]]
       });
    
     

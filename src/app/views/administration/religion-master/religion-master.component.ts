@@ -23,8 +23,8 @@ export class ReligionMasterComponent implements OnInit {
   ngOnInit() {
     this.religionForm=this.fb.group(
       {
-        religionName:['',[Validators.required,Validators.pattern(this.validation.onlyAlphabet)]],
-        code:['',[Validators.required,Validators.pattern(this.validation.onlyNumber)]]
+        religionName:['',[Validators.required]],
+        code:['',[Validators.required]]
       });
   }
 
