@@ -1,28 +1,27 @@
 .mat-toolbar{
-    text-align: center!important;  
+  text-align: center!important;  
+}
+.card-card{
+  width: 8%;
+  margin-left: 18%;
+  margin-top: 1%;
+  margin-bottom: 10%;
   }
-  .table-card{
-    width: 85%;
-    margin-left: 7%;
-    margin-top: 1%;
-    margin-bottom: 10%;
+  table {
+      width: 100%;
     }
-    table {
-        width: 100%;
-      }
-      
-      .mat-form-field {
-        font-size: 14px;
-        width: 100%;
-      }
-      .icon-align{
-        text-align: center !important;
-      }
-      .icon_edit_color{
-        color:#10174c;
-        cursor: pointer;
-      }
-      .icon_delte_color{
-        color:#D92121;
-        cursor: pointer;
-      }
+    .mat-form-field {
+      font-size: 14px;
+      width: 100%;
+    }
+    .icon-align{
+      text-align: center !important;
+    }
+    .icon_edit_color{
+      color:#10174c;
+      cursor: pointer;
+    }
+    .icon_delte_color{
+      color:#D92121;
+      cursor: pointer;
+    }

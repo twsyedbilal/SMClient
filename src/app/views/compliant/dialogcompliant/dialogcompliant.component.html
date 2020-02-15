@@ -5,7 +5,7 @@
   <form [formGroup]='form'  *ngIf='form !=null' #formDirective="ngForm" (ngSubmit)='updateForm(form,formDirective)'>
 
     <mat-form-field class="example-full-width formFieldAlign">
-      <input matInput formControlName='remark' placeholder="Name">
+      <input matInput formControlName='remark' placeholder="remark">
       <mat-error *ngIf='form.get("remark").hasError("required")'> Name is <strong>
           required</strong></mat-error>
       <mat-error *ngIf="form.get('remark').hasError('pattern')">
@@ -24,7 +24,7 @@
     </mat-form-field>
     <div>
       <button (click)='updateForm()' mat-raised-button type="submit" class="submit-btn" color="primary">
-        <span  class='submit-title'>Update</span></button>
+      <span  class='submit-title'>Update</span></button>
   </div>
   </form>
 </div>

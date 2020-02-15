@@ -42,8 +42,7 @@ constructor(public dialogRef: MatDialogRef<DialogcompliantComponent>,
             }
   }
 }
-
-      loadData(){
+    loadData(){
         setTimeout(()=>{
           this.loadForm();
       },1000);
@@ -60,9 +59,6 @@ loadForm(){
     });
 
   }
-
-
-
     updateForm(){
         let masterData=new Master();
         masterData.id=this.data.id;
