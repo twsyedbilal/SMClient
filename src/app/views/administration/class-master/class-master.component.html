@@ -5,31 +5,97 @@
   <mat-toolbar color='primary'><span style="color:#fff">Class Master</span></mat-toolbar>
     <form [formGroup]='classForm' #formDirective="ngForm" (ngSubmit)='submitClassForm(classForm,formDirective)'>
     
-    <mat-form-field class="example-full-width formFieldAlign">
-      <input matInput formControlName='cName'  placeholder="Class Name">
-      <mat-error *ngIf='classForm.get("cName").hasError("required")'>Class Name is<strong>Required</strong></mat-error>
-      <mat-error *ngIf='!classForm.get("cName").hasError("required")
-             && classForm.get("cName").hasError("pattern")'>
-             Class Name <strong>only Charecters allow</strong></mat-error>
-   
-    </mat-form-field>
-  
-    <mat-form-field  class="example-full-width formFieldAlign">
-      <input matInput formControlName='cCode'  placeholder="Class Code">
-      <mat-error *ngIf='classForm.get("cCode").hasError("required")'>Class Code is <strong>Required</strong></mat-error>
-      <mat-error *ngIf='!classForm.get("cCode").hasError("required")
-             && classForm.get("cCode").hasError("pattern")'>
-             Class Code <strong>only Alpha Numaric allow</strong></mat-error>
-    </mat-form-field>
-    
+
+      <div fxLayout="column">
+        <div fxLayoutAlign="space-evenly center">
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          <input matInput formControlName='className'  placeholder="Class Name">
+          <mat-error *ngIf='classForm.get("className").hasError("required")'>class name is <strong>Required</strong></mat-error>
+          <mat-error *ngIf='!classForm.get("className").hasError("required")
+                 && classForm.get("className").hasError("pattern")'>
+                 Class Name <strong>only Charecters allow</strong></mat-error>
+        </mat-form-field>
       
-    <mat-form-field  class="example-full-width formFieldAlign">
-    <input matInput formControlName='cFees' placeholder="Fees">
-    <mat-error *ngIf='classForm.get("cFees").hasError("required")'>Class Fees is <strong>Required</strong></mat-error>
-    <mat-error *ngIf='!classForm.get("cFees").hasError("required")
-           && classForm.get("cFees").hasError("pattern")'>
-           Class Fees <strong>only Numbers allow</strong></mat-error>
-  </mat-form-field>
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          <input matInput formControlName='code'  placeholder="Class Code">
+      <mat-error *ngIf='classForm.get("code").hasError("required")'> code is <strong>Required</strong></mat-error>
+      <mat-error *ngIf='!classForm.get("code").hasError("required")
+             && classForm.get("code").hasError("pattern")'>
+             class code <strong>only Alpha Numaric allow</strong></mat-error>
+        </mat-form-field>
+     </div>
+      </div>
+
+ <div fxLayout="column">
+        <div fxLayoutAlign="space-evenly center">
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          <input matInput formControlName='classsStartingDate' [matDatepicker]="picker" placeholder="Class Starting Date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          <input matInput formControlName='classsEndingDate' [matDatepicker]="pickerTo" placeholder="Class Ending Date">
+          <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+          <mat-datepicker #pickerTo></mat-datepicker>
+        </mat-form-field>
+     </div>
+      </div>
+
+
+      <div fxLayout="column">
+        <div fxLayoutAlign="space-evenly center">
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          <mat-label>Class Teacher</mat-label>
+          <mat-select formControlName='userId'> 
+            <mat-option *ngFor='let x of userDto' [value]='x.id'>
+              {{x.username}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          <input matInput formControlName='fees' placeholder="Fees">
+          <mat-error *ngIf='classForm.get("fees").hasError("required")'> fees is <strong>Required</strong></mat-error>
+          <mat-error *ngIf='!classForm.get("fees").hasError("required")
+                 && classForm.get("fees").hasError("pattern")'>
+                 class fees <strong>only Numbers allow</strong></mat-error>
+        </mat-form-field>
+     </div>
+      </div>
+
+      <div fxLayout="column">
+        <div fxLayoutAlign="space-evenly center">
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          <input matInput formControlName='classsLocation'  placeholder="class Location">
+          <mat-error *ngIf='classForm.get("classsLocation").hasError("required")'>classs location  is <strong> Required</strong></mat-error>
+          <mat-error *ngIf='!classForm.get("classsLocation").hasError("required")
+                 && classForm.get("classsLocation").hasError("pattern")'>
+                 classs location name <strong>only Charecters allow</strong></mat-error>
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          <input matInput formControlName='classsCapacity'  placeholder="class Capicity">
+    <mat-error *ngIf='classForm.get("classsCapacity").hasError("required")'>class capitiy  is <strong>Required</strong></mat-error>
+    <mat-error *ngIf='!classForm.get("classsCapacity").hasError("required")
+           && classForm.get("classsCapacity").hasError("pattern")'>
+           classs capacity  <strong>only Charecters allow</strong></mat-error>
+        </mat-form-field>
+     </div>
+      </div>
+      
+      <div fxLayout="column">
+        <div   fxLayoutAlign="space-evenly center">
+          <mat-form-field class="example-full-width" fxFlex='30'>
+            <input matInput  formControlName='classsType' placeholder="Class Type" >
+           </mat-form-field>
+             <mat-radio-group formControlName='classsType' class="example-full-width " fxFlex='30' >
+               <mat-radio-button   value="free">free</mat-radio-button>
+               <mat-radio-button  value="paid" style="margin-left:2%">Paid</mat-radio-button>
+             </mat-radio-group>
+      
+</div>
+      </div>
 
     <div>
       <button mat-raised-button  type="submit" class="submit-btn" color="primary"><span class='submit-title'>Submit</span></button>

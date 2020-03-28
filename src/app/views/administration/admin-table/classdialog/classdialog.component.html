@@ -3,30 +3,75 @@
     <form [formGroup]='classForm' *ngIf='classForm !=null' #formDirective="ngForm" (ngSubmit)='submitClassForm(classForm,formDirective)'>
     
     <mat-form-field class="example-full-width formFieldAlign">
-      <input matInput formControlName='cName'  placeholder="Class Name">
-      <mat-error *ngIf='classForm.get("cName").hasError("required")'>Class Name is<strong>Required</strong></mat-error>
-      <mat-error *ngIf='!classForm.get("cName").hasError("required")
-             && classForm.get("cName").hasError("pattern")'>
+      <input matInput formControlName='className'  placeholder="Class Name">
+      <mat-error *ngIf='classForm.get("className").hasError("required")'>Class Name is<strong>Required</strong></mat-error>
+      <mat-error *ngIf='!classForm.get("className").hasError("required")
+             && classForm.get("className").hasError("pattern")'>
              Class Name <strong>only Charecters allow</strong></mat-error>
    
     </mat-form-field>
   
     <mat-form-field  class="example-full-width formFieldAlign">
-      <input matInput formControlName='cCode'  placeholder="Class Code">
-      <mat-error *ngIf='classForm.get("cCode").hasError("required")'>Class Code is <strong>Required</strong></mat-error>
-      <mat-error *ngIf='!classForm.get("cCode").hasError("required")
-             && classForm.get("cCode").hasError("pattern")'>
+      <input matInput formControlName='code'  placeholder="Class Code">
+      <mat-error *ngIf='classForm.get("code").hasError("required")'>Class Code is <strong>Required</strong></mat-error>
+      <mat-error *ngIf='!classForm.get("code").hasError("required")
+             && classForm.get("code").hasError("pattern")'>
              Class Code <strong>only Numbers allow</strong></mat-error>
     </mat-form-field>
     
       
     <mat-form-field  class="example-full-width formFieldAlign">
-    <input matInput formControlName='cFees' placeholder="Fees">
-    <mat-error *ngIf='classForm.get("cFees").hasError("required")'>Class Fees is <strong>Required</strong></mat-error>
-    <mat-error *ngIf='!classForm.get("cFees").hasError("required")
-           && classForm.get("cFees").hasError("pattern")'>
+    <input matInput formControlName='fees' placeholder="Fees">
+    <mat-error *ngIf='classForm.get("fees").hasError("required")'>Class Fees is <strong>Required</strong></mat-error>
+    <mat-error *ngIf='!classForm.get("fees").hasError("required")
+           && classForm.get("fees").hasError("pattern")'>
            Class Fees <strong>only Numbers allow</strong></mat-error>
   </mat-form-field>
+
+  
+  <mat-form-field  class="example-full-width formFieldAlign">
+    <input matInput formControlName='classsCapacity' placeholder="ClassCapacity">
+    <mat-error *ngIf='classForm.get("classsCapacity").hasError("required")'>Class Fees is <strong>Required</strong></mat-error>
+    <mat-error *ngIf='!classForm.get("classsCapacity").hasError("required")
+           && classForm.get("classsCapacity").hasError("pattern")'>
+           Class Fees <strong>only Numbers allow</strong></mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field  class="example-full-width formFieldAlign">
+    <input matInput formControlName='classsType' placeholder="classType">
+    <mat-error *ngIf='classForm.get("classsType").hasError("required")'>Class Fees is <strong>Required</strong></mat-error>
+    <mat-error *ngIf='!classForm.get("classsType").hasError("required")
+           && classForm.get("classsType").hasError("pattern")'>
+           Class Fees <strong>only Numbers allow</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field  class="example-full-width formFieldAlign">
+    <input matInput formControlName='classsLocation' placeholder="classLocation">
+    <mat-error *ngIf='classForm.get("classsLocation").hasError("required")'>Class Fees is <strong>Required</strong></mat-error>
+    <mat-error *ngIf='!classForm.get("classsLocation").hasError("required")
+           && classForm.get("classsLocation").hasError("pattern")'>
+           Class Fees <strong>only Numbers allow</strong></mat-error>
+  </mat-form-field>
+
+ 
+
+<div fxLayoutAlign="space-evenly margin-left">
+<mat-form-field class="example-full-width" fxFlex='30' >
+    <input matInput formControlName='classsStartingDate' [matDatepicker]="pickerTo" placeholder="ClassStartingDate">
+    <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+    <mat-datepicker #pickerTo></mat-datepicker>
+</mat-form-field>  
+</div>  
+
+<div fxLayoutAlign="space-evenly margin-left">
+  <mat-form-field class="example-full-width" fxFlex='30' >
+      <input matInput formControlName='classsEndingDate' [matDatepicker]="picker" placeholder="classsEndingDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>  
+  </div>  
+
 
     <div>
       <button mat-raised-button  type="submit" class="submit-btn" color="primary"><span class='submit-title'>Submit</span></button>

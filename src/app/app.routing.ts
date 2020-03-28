@@ -52,7 +52,33 @@ export const rootRouterConfig: Routes = [
         path: 'dashboard', 
         loadChildren: () => import('./views/dashboard/dashboard.module')
         .then(m =>m.DashboardModule), 
-      }
+      },
+      {
+        path: 'compliant', 
+        loadChildren: () => import('./views/compliant/compliant-module.module')
+        .then(m =>m.CompliantModuleModule), 
+      },
+      
+      
+
+      {
+        path: 'subject', 
+        loadChildren: () => import('./views/subject/subject.module')
+        .then(m =>m.SubjectModule), 
+      },
+      
+      {
+        path: 'exam', 
+        loadChildren: () => import('./views/exam.module')
+        .then(m =>m.ExamModule), 
+      },
+      
+      {
+        path: 'studentmark', 
+        loadChildren: () => import('./views/student-mark/studnet-mark.module')
+        .then(m =>m.StudnetMarkModule), 
+      },
+         
     ]
   },
   { 

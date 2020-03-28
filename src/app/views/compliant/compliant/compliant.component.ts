@@ -84,7 +84,6 @@ submitForm(data: FormGroup, formDirective: FormGroupDirective): void{
     compliants.remark=this.complianttypesForm.get('remark').value;
     compliants.complianttypeid=this.complianttypesForm.get('complianttypeid').value;
     compliants.admissionId=this.complianttypesForm.get('admissionId').value;
-
     console.log(compliants);
     this.compliantService.compliantData(compliants)
     .subscribe(data=>{
@@ -114,6 +113,7 @@ submitForm(data: FormGroup, formDirective: FormGroupDirective): void{
       this.dataSource = new MatTableDataSource(res.data);
       this.dataSource.paginator = this.paginato;
      console.log(this.dataSource);
-    });    
+    });
+   
   }
 }

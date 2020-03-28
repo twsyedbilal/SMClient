@@ -4,8 +4,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatPaginator, MatSort, MatSnackBar, MatDialog, MatTableDataSource } from '@angular/material';
 import { CompliantserviceService } from '../compliantservice.service';
 import { Overlay } from '@angular/cdk/overlay';
-import { DialogComponent } from 'app/views/administration/admin-table/dialog/dialog.component';
+//import { DialogComponent } from 'app/views/administration/admin-table/dialog/dialog.component';
 import { SnackBarMassageComponent } from 'app/views/snack-bar-massage/snack-bar-massage.component';
+import { DialogComponent } from 'app/views/administration/admin-table/dialog/dialog.component';
 
 @Component({
   selector: 'app-compliantlist',

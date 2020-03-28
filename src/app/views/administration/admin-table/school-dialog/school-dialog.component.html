@@ -11,9 +11,7 @@
           updateschoolForm.get('schoolName').hasError('pattern')">
             School Name <strong>only Charecters allow</strong>
           </mat-error>
-    
         </mat-form-field>
-    
         <mat-form-field class="example-full-width formFieldAlign">
           <input matInput formControlName='schoolCode' placeholder="School Code">
           <mat-error *ngIf="updateschoolForm.get('schoolCode').hasError('required')">

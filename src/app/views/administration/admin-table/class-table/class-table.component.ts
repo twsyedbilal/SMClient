@@ -5,6 +5,7 @@ import { SnackBarMassageComponent } from 'app/views/snack-bar-massage/snack-bar-
 import { Overlay } from '@angular/cdk/overlay';
 import { DialogComponent } from '../dialog/dialog.component';
 import { ClassdialogComponent } from '../classdialog/classdialog.component';
+import { DateFormatClass, DateFormatEnd } from 'app/shared/utils/dateFormat';
 
 @Component({
   selector: 'app-class-table',
@@ -12,11 +13,12 @@ import { ClassdialogComponent } from '../classdialog/classdialog.component';
   styleUrls: ['./class-table.component.scss']
 })
 export class ClassTableComponent implements OnInit {
-  displayedColumns: string[] = ['srNo', 'name', 'code','Fees','edit','delete'];
+  [x: string]: any;
+  displayedColumns: string[] = ['srNo', 'name','userId', 'code','Fees','classsCapacity', 'classsEndingDate','classsStartingDate','classsLocation','classsType','edit','delete'];
   dataSource:any;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
-
+  dateFormatt=new DateFormatEnd();
   constructor(private service: AdministrationService,
     private snackBar: MatSnackBar,public dailog: MatDialog,
     private overlay:Overlay
@@ -78,6 +80,8 @@ export class ClassTableComponent implements OnInit {
          });
       }
       else{
+        let classsEndingDate:any=this.dateFormatt.getYYMMDD(this.classForm.get('classsEndingDate').value); 
+        console.log(classsEndingDate);
         this.snackBar.openFromComponent(SnackBarMassageComponent, {
           data: {
             message: 'Data Not Deleted ',

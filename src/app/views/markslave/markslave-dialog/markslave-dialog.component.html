@@ -1,0 +1,44 @@
+
+    <mat-card *ngIf='markslave !=null'>
+      <mat-toolbar color='primary'><span style="color:#fff">Marks-Slave  Master</span> </mat-toolbar>
+      <form [formGroup]='updateschoolForm' #formDirective="ngForm"  (ngSubmit)='update(schoolForm,formDirective)'>
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput formControlName='mark' placeholder="mark *">
+          <mat-error *ngIf="updateschoolForm.get('mark').hasError('required')">
+            exam Name <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!updateschoolForm.get('mark').hasError('required') &&
+          updateschoolForm.get('mark').hasError('pattern')">
+            School Name <strong>only Charecters allow</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput formControlName='remark' placeholder="remark">
+          <mat-error *ngIf="updateschoolForm.get('remark').hasError('required')">
+            remark <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!updateschoolForm.get('remark').hasError('required') &&
+          updateschoolForm.get('remark').hasError('pattern')">
+          remark <strong>only Numbers allow</strong>
+          </mat-error>
+    
+        </mat-form-field> 
+      
+  <mat-form-field class="example-full-width " fxFlex='30'>
+    <mat-label>studentsName </mat-label>
+    <mat-select formControlName='admission'>
+      <mat-option *ngFor='let x of admissiondto' [value]='x.id'>
+        {{x.studentsName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>  
+  
+
+  
+        <div>
+          <button mat-raised-button type="submit" class="submit-btn" color="primary">
+            <span class='submit-title'>Submit</span></button>
+        </div>
+      </form>
+    </mat-card> 
+

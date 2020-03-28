@@ -1,0 +1,44 @@
+<!-- 
+    <mat-card *ngIf='ctDto !=null'>
+      <mat-toolbar color='primary'><span style="color:#fff">School Master</span> </mat-toolbar>
+      <form [formGroup]='updatecomplianttypelForm' #formDirective="ngForm"  (ngSubmit)='update(updatform,formDirective)'>
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput formControlName='name' placeholder=" Name *">
+          <mat-error *ngIf="updatecomplianttypelForm.get('name').hasError('required')">
+             Name <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!updatecomplianttypelForm.get('name').hasError('required') &&
+          updatecomplianttypelForm.get('name').hasError('pattern')">
+             Name <strong>only Charecters allow</strong>
+          </mat-error> 
+        </mat-form-field>
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput formControlName='code' placeholder=" Code">
+          <mat-error *ngIf="updatecomplianttypelForm.get('code').hasError('required')">
+             Code <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!updatecomplianttypelForm.get('code').hasError('required') &&
+          updatecomplianttypelForm.get('code').hasError('pattern')">
+             Code <strong>only Numbers allow</strong>
+          </mat-error>
+    
+        </mat-form-field>
+    
+    
+      <!-- <mat-form-field class="example-full-width formFullFieldAlign">
+         <input matInput formControlName='schoolAddress' placeholder="school Address">
+          <mat-error *ngIf="updatecomplianttypelForm.get('schoolAddress').hasError('required')">
+            School Address <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!updatecomplianttypelForm.get('schoolAddress').hasError('required') &&
+          updatecomplianttypelForm.get('schoolAddress').hasError('pattern')">
+            School Address <strong>required</strong>
+          </mat-error>
+      </mat-form-field> -->
+        <div>
+          <button mat-raised-button type="submit" class="submit-btn" color="primary">
+            <span class='submit-title'>Submit</span></button>
+        </div>
+      </form>
+    </mat-card> 
+ -->

@@ -10,7 +10,7 @@ export class CompliantserviceService {
 
   constructor(private http: HttpClient) { }
  
-  //Compliant Calls
+  //Compliant-type Calls
   public submitcomplianttype(data: any): Observable<any> {
     return this.http.post<any>(environment.userApi + '/compliant/type/create', data)
   }
@@ -44,10 +44,10 @@ export class CompliantserviceService {
       .catch((e) => this.handleError(e));
 }
   handleError(e: any) {
-    throw new Error("Method not implemented.");
+    throw new  Error("Method not implemented.");
   }
 
-  //CompliantList Calls
+  //Compliant Calls
   public compliantData(data: any): Observable<any> {
     return this.http.post<any>(environment.userApi + '/compliant/create', data)
   }
@@ -58,7 +58,7 @@ export class CompliantserviceService {
   }
  
   public deletdCompliantById(id:number):Observable<any>{
-    return this.http.get<any>(environment.userApi+'/compliant/deletebyid/'+id)
+    return this.http.get<any>(environment.userApi+'/compliant/type/deletebyid/'+id)
   }
 
   public getCompliantListById(id:number):Observable<any>{

@@ -2,14 +2,12 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GestureConfig, MatIconModule } from '@angular/material';
+import { GestureConfig, MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule, MatFormField } from '@angular/material';
 import { 
   PerfectScrollbarModule, 
   PERFECT_SCROLLBAR_CONFIG, 
   PerfectScrollbarConfigInterface
 } from 'ngx-perfect-scrollbar';
-
-
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './shared/inmemory-db/inmemory-db.service';
 
@@ -25,16 +23,19 @@ import { Interceptor } from './shared/services/auth/interceptor';
 import { AuthService } from './shared/services/auth/auth.service';
 import { AuthGuard } from './shared/services/auth/auth.guard';
 import { NavigationService } from './shared/services/navigation.service';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
 import { SnackBarMassageComponent } from './views/snack-bar-massage/snack-bar-massage.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+//import { DialogComponent } from './views/compliant/dialog/dialogcompliant.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
-}
+} 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
-
 @NgModule({
   imports: [  
     BrowserModule,
@@ -42,7 +43,19 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SharedModule,
     MatIconModule,
     HttpClientModule,
+    MatToolbarModule,
     PerfectScrollbarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
+    
+    
+    // ComplianttypesComponent,
+  
+  
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -54,9 +67,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     RouterModule.forRoot(rootRouterConfig, { useHash: false })
   ],
   entryComponents: [
-    SnackBarMassageComponent
+    SnackBarMassageComponent,
+  //  DialogComponent,
+    
   ],
-  declarations: [AppComponent, SnackBarMassageComponent,],
+  declarations: [AppComponent, SnackBarMassageComponent, ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
     AuthService,AuthGuard,NavigationService,  
@@ -64,6 +79,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig },
     { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
   ],
-  bootstrap: [AppComponent]
+  bootstrap : [AppComponent]
 })
-export class AppModule { }
+export class AppModule { }  

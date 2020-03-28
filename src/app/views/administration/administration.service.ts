@@ -47,8 +47,6 @@ export class AdministrationService {
     return this.http.get<any>(environment.userApi+'/schooltype/getbyid/'+id)
  
   }
-
-
   //Religion Calls//
   public postReligion(data: any): Observable<any> {
     return this.http.post<any>(environment.userApi + '/religion/savereligion', data)
@@ -165,10 +163,9 @@ public deletePaymentTypeById(id:number):Observable<any>{
   }
 
 
-  //Occupation calls
-  
-  public postOccupation(data: any): Observable<any> {
-    return this.http.post<any>(environment.userApi + '/occupation/saveoccupation',data)
+   //Occupation  calls
+   public postOccupation(data: any): Observable<any> {
+   return this.http.post<any>(environment.userApi + '/occupation/saveoccupation',data)
   }
 
   public getAllOccupationData():Observable<any>{
@@ -230,6 +227,10 @@ public deletePaymentTypeById(id:number):Observable<any>{
  
   public postClass(data: ClassDto): Observable<any> {
     return this.http.post<any>(environment.userApi + '/class/save', data)
+  }
+
+  public getAllUserData():Observable<any>{
+    return this.http.get<any>(environment.userApi+'/user/findAll')
   }
 
   public getAllClassData(): Observable<any> {

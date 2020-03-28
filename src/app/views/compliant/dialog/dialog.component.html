@@ -5,26 +5,26 @@
   <form [formGroup]='form'  *ngIf='form !=null' #formDirective="ngForm" (ngSubmit)='updateForm(form,formDirective)'>
 
     <mat-form-field class="example-full-width formFieldAlign">
-      <input matInput formControlName='remark' placeholder="remark">
-      <mat-error *ngIf='form.get("remark").hasError("required")'> Name is <strong>
+      <input matInput formControlName='name' placeholder="Name">
+      <mat-error *ngIf='form.get("name").hasError("required")'> Name is <strong>
           required</strong></mat-error>
-      <mat-error *ngIf="form.get('remark').hasError('pattern')">
+      <mat-error *ngIf="form.get('name').hasError('pattern')">
          Name <strong>only Charecters allow</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="example-full-width formFieldAlign">
-      <input matInput formControlName='StudentName' placeholder="Code">
-      <mat-error *ngIf='form.get("StudentName").hasError("required")'>school Code Name is <strong>
+      <input matInput formControlName='code' placeholder="Code">
+      <mat-error *ngIf='form.get("code").hasError("required")'>compliant Code Name is <strong>
         required</strong></mat-error>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-    <mat-error *ngIf="form.get('StudentName').hasError('pattern')">
+    <mat-error *ngIf="form.get('code').hasError('pattern')">
        Code  <strong>only Numbers allow</strong>
     </mat-error>
   
     </mat-form-field>
     <div>
       <button (click)='updateForm()' mat-raised-button type="submit" class="submit-btn" color="primary">
-      <span  class='submit-title'>Update</span></button>
+        <span  class='submit-title'>Update</span></button>
   </div>
   </form>
 </div>

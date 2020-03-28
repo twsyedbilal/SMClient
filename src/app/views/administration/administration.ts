@@ -38,11 +38,27 @@ export class BookDto{
     bookCode:string;
 }
 
+
+export class UserDto{
+    id:number;
+    username:string;
+    userId:number;
+   
+}
+
 export class ClassDto{
     className:string;
     code:string;
     id?:number;
     fees:number;
+    userId:number;
+    classsLocation:string;
+    classsType:string;
+    classsCapacity:string;
+    classsStartingDate:string;
+    classsEndingDate:string;
+    classsStratingDate:string;
+
 }
 
 export class PaymentTypeDto{

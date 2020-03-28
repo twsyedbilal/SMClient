@@ -1,0 +1,113 @@
+
+<mat-tab-group (selectedTabChange)="tabChanged($event)">
+  <mat-tab label="Master"> 
+    
+<div class="mat-card">
+  <mat-toolbar color='primary'><span style="color:#fff"> MarkSlave Master</span></mat-toolbar>
+  <form [formGroup]='occupationForm' #formDirective="ngForm" (ngSubmit)='submit(occupationForm,formDirective)'>
+   
+     <mat-form-field class="example " fxFlex='30'>
+      <mat-label>Student Name</mat-label>
+      <mat-select formControlName='admission'>
+        <mat-option *ngFor='let x of admissionDto' [value]='x.id'>
+          {{x.studentsName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    
+    <!-- <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Number"
+               matInput
+               [formControl]="admission"
+               [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let x of admissionDto | async" [value]="x.id">
+            {{x.studentsName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form> -->
+
+
+
+    <mat-form-field class="example-full-width formFieldAligntwo">
+      <input matInput formControlName='mark' placeholder="Marks">
+      <mat-error *ngIf='occupationForm.get("mark").hasError("required")'>
+        Mark is <strong>required</strong></mat-error>
+      <mat-error *ngIf='!occupationForm.get("mark").hasError("required")
+      && occupationForm.get("mark").hasError("pattern")'>
+        mark <strong>only Charecters allow</strong></mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width formFieldAlignone">
+      <input matInput formControlName='remark' placeholder="remark">
+      <mat-error *ngIf='occupationForm.get("remark").hasError("required")'>
+        remark is <strong>required</strong></mat-error>
+      <mat-error *ngIf='!occupationForm.get("remark").hasError("required")
+     && occupationForm.get("remark").hasError("pattern")'>
+        remark Code <strong>only Numbers allow</strong></mat-error>
+    </mat-form-field>
+
+
+   
+    <mat-card>
+      <table mat-table [dataSource]="" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="studentname">
+          <th mat-header-cell *matHeaderCellDef> studentname </th>
+          <td mat-cell *matCellDef="let element"> {{element.studentname}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rollNo">
+          <th mat-header-cell *matHeaderCellDef> rollNo </th>
+          <td mat-cell *matCellDef="let element"> {{element.rollNo}} </td>
+        </ng-container> 
+
+           <!-- <mat-form-field class="example-full-width formFieldAlign"> 
+          <input matInput formControlName='mark' placeholder="Exam Name *">
+          <mat-error *ngIf="StudentMarkForm.get('mark').hasError('required')">
+            School Name <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!StudentMarkForm.get('mark').hasError('required') &&
+          StudentMarkForm.get('mark').hasError('pattern')">
+            School Name <strong>only Charecters allow</strong>
+          </mat-error>
+         </mat-form-field>   -->
+
+
+        <!-- <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef style='padding-right:20px;text-align: center'> Delete </th>
+          <td mat-cell *matCellDef="let element" style="text-align: center;">
+            <i class="material-icons icon_delte_color" (click)='delete(element.id)' matTooltip="Delete"
+              style="text-align: center;"> delete_outline </i>
+          </td>
+        </ng-container> -->
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </mat-card>
+
+
+
+    <div class ="submitdata">
+      <button mat-raised-button type="submit" class="submit-btn" color="primary"><span
+          class='submit-title'>Submit</span></button>
+    </div>
+  </form>
+</div>    
+  </mat-tab>
+   <mat-tab label="Mark-Slave List"> 
+    <div *ngIf='tableshow==false'>
+      <app-markslave-list></app-markslave-list>
+  
+    </div>
+  </mat-tab> 
+</mat-tab-group>

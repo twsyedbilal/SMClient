@@ -66,6 +66,47 @@ export class NavigationService {
     },
   
     {
+      name: "Subject",
+      type: "dropDown",
+      icon: "person_add",
+      state:"subject",
+      sub: [
+        { 
+          name: "Subject", 
+          state: "subject"
+         },
+      ] 
+    },
+    {
+      name: "Exam",
+      type: "dropDown",
+      icon: "person_add",
+      state:"exam",
+      sub: [
+        { 
+          name: "Exam", 
+          state: "exam"
+         },
+      ] 
+    },
+
+    
+    {
+      name: "student-mark",
+      type: "dropDown",
+      icon: "person_add",
+      state:"studentmark",
+      sub: [
+        { 
+          name: "student-marks", 
+          state: "studentmark"
+         },
+      ] 
+    },
+
+
+
+    {
       name: "Account",
       type: "dropDown",
       icon: "person_add",
@@ -77,7 +118,28 @@ export class NavigationService {
          },
       ]
     },
-   
+    
+    {
+      name: "Compliants",
+      type: "dropDown",
+      icon: "person_add",
+      state:"compliant",
+      sub: [
+        { 
+          name: "Compliant Types", 
+          state: "type-master"
+         },
+         { 
+          name: "Compliants", 
+          state: "compliants"
+         },
+          { 
+           name: "Compliants-List", 
+           state: "compliantlist"
+          },
+      ]
+    },
+    
     {
       name: "Administration",
       type: "dropDown",

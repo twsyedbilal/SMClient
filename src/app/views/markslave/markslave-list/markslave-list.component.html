@@ -1,0 +1,54 @@
+<!--<mat-card>-->
+  <div class='table-card'>
+    <div style="width: 30%;float: right;">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search..">
+      </mat-form-field>
+  </div>
+    <mat-toolbar color='primary'><span style="color:#fff">Mark-Slave List</span></mat-toolbar>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="srNo">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element;let i=index">{{i+1}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="mark">
+        <th mat-header-cell *matHeaderCellDef> mark </th>
+        <td mat-cell *matCellDef="let element"> {{element.mark}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="remark">
+        <th mat-header-cell *matHeaderCellDef> remark </th>
+        <td mat-cell *matCellDef="let element"> {{element.remark}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="admission">
+        <th mat-header-cell *matHeaderCellDef> student-name </th>
+        <td mat-cell *matCellDef="let element"> {{element.admission.studentsName}} </td>
+      </ng-container>
+
+    
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef class="icon-align "> Edit</th>
+        <td mat-cell *matCellDef="let element" class="icon-align">
+          <i class="material-icons icon_edit_color" (click)='openDialog(element.id)'
+           matTooltip="Edit">create</i>
+        </td>
+      </ng-container> 
+  
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef style='padding-right:20px;text-align: center'> Delete </th>
+        <td mat-cell *matCellDef="let element" style="text-align: center;">
+          <i class="material-icons icon_delte_color" (click)='delete(element.id)' matTooltip="Delete"
+            style="text-align: center;"> delete_outline </i>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+  <!--</mat-card>-->

@@ -4,27 +4,11 @@
  
   <form [formGroup]='complianttypesForm' #formDirective="ngForm" (ngSubmit)='submitForm(complianttypesForm,formDirective)'>
    
-   
-<!--    
- <div fxLayoutAlign="space-evenly center">
-<mat-form-field class="example-full-width" fxFlex='30'>
- <input matInput formControlName='income' placeholder="Income">
-   </mat-form-field>
+ 
 
-   
-   <mat-form-field class="example-full-width" fxFlex='30'>
-     <input formControlName='contactNo' matInput placeholder="Contact No">
-   </mat-form-field>
-</div>
-  -->
-
-<div fxLayoutAlign="space-evenly center">
-<!-- 
-   <mat-form-field class="example-full-width " fxFlex='30'>
-     <input matInput formControlName='identityByMark' placeholder="Identity By Mark Or AadharNo;">
-   </mat-form-field>  -->
-   
-   <mat-form-field class="example-full-width " fxFlex='30'>
+    <div fxLayout="column">
+      <div fxLayoutAlign="space-evenly center">
+      <mat-form-field class="example-full-width" fxFlex='30'>
     <mat-label>Student Name</mat-label>
     <mat-select formControlName='admissionId'>
       <mat-option *ngFor='let x of admissionDto' [value]='x.id'>
@@ -44,20 +28,28 @@
   </mat-form-field>
   
 </div>     
+    </div>
 
 
-   <div fxLayoutAlign="space-evenly center" fxLayoutAlign="space-evenly center">
-    <mat-form-field class="example-full-width" fxFlex='30'>
+    <div fxLayout="column">
+      <div fxLayoutAlign="space-evenly center">
+      <mat-form-field class="example-full-width" fxFlex='30'>
      <input  ngModel name="remark" matInput formControlName='remark' placeholder="remark" >
    </mat-form-field>
 
+
+
+   
    <div class="form-group">
     <label for="file">Choose File</label>
     <input type="file"
            id="file"
            (change)="handleFileInput($event.target.files)">
     </div>
-    <div>
+
+      </div>
+
+      <div fxLayoutAlign="space-around center" class='btn'>
       <button mat-raised-button type="submit" class="submit-btn" color="primary"><span
           class='submit-title'>Submit</span></button>
     </div>

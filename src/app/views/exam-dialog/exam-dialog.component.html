@@ -1,0 +1,66 @@
+
+    <mat-card *ngIf='ExamData !=null'>
+      <mat-toolbar color='primary'><span style="color:#fff">Exam Master</span> </mat-toolbar>
+      <form [formGroup]='updateschoolForm' #formDirective="ngForm"  (ngSubmit)='update(schoolForm,formDirective)'>
+      
+      
+
+        <div fxLayout="column">
+          <div fxLayoutAlign="space-evenly center">
+            <mat-form-field class="example-full-width" fxFlex='30'>
+          <input matInput formControlName='examName' placeholder="exam Name *">
+          <mat-error *ngIf="updateschoolForm.get('examName').hasError('required')">
+            exam Name <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!updateschoolForm.get('examName').hasError('required') &&
+          updateschoolForm.get('examName').hasError('pattern')">
+            School Name <strong>only Charecters allow</strong>
+          </mat-error>
+        </mat-form-field>
+
+
+        
+        <mat-form-field class="example-full-width" fxFlex='30'>          <input matInput formControlName='examStartDate' placeholder="examStartDate">
+          <mat-error *ngIf="updateschoolForm.get('examStartDate').hasError('required')">
+            examStartDate <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!updateschoolForm.get('examStartDate').hasError('required') &&
+          updateschoolForm.get('examStartDate').hasError('pattern')">
+          examStartDate <strong>only Numbers allow</strong>
+          </mat-error>
+        </mat-form-field>
+
+        </div>
+        </div>
+
+        <div fxLayout="column">
+          <div fxLayoutAlign="space-evenly center">
+            <mat-form-field class="example-full-width" fxFlex='30'>
+         <input matInput formControlName='examEndDate' placeholder="examEndDate">
+          <mat-error *ngIf="updateschoolForm.get('examEndDate').hasError('required')">
+            examEndDate <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!updateschoolForm.get('examEndDate').hasError('required') &&
+          updateschoolForm.get('examEndDate').hasError('pattern')">
+          examEndDate <strong>required</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" fxFlex='30'>
+    <mat-label>Class Name</mat-label>
+    <mat-select formControlName='classs'>
+      <mat-option *ngFor='let x of ClassDto' [value]='x.id'>
+        {{x.className}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>  
+
+  </div>
+        </div>
+        <div fxLayoutAlign="space-around center" class='btn'>
+          <button mat-raised-button type="submit" class="submit-btn" color="primary">
+            <span class='submit-title'>Submit</span></button>
+        </div>
+      </form>
+    </mat-card> 
+

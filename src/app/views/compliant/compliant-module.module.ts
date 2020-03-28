@@ -21,12 +21,15 @@ import { CompliantModuleRoutingModule } from './compliant-module-routing.module'
 import { ComplianttypesComponent } from './complianttypes/complianttypes.component';
 import { CompliantComponent } from './compliant/compliant.component';
 import { CompliantlistComponent } from './compliantlist/compliantlist.component';
-import { DialogcompliantComponent } from './dialogcompliant/dialogcompliant.component';
+import { CompliantTypeDialogComponent } from './compliant-type-dialog/compliant-type-dialog.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [ComplianttypesComponent, CompliantComponent,
      CompliantlistComponent,
-     DialogcompliantComponent ],
+  
+    
+       ],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -60,9 +63,11 @@ import { DialogcompliantComponent } from './dialogcompliant/dialogcompliant.comp
     MatFormFieldModule,
     MatStepperModule,
     ReactiveFormsModule,
-    FormsModule,
-
-    CompliantModuleRoutingModule
-  ]
+    MatToolbarModule,
+    CompliantModuleRoutingModule,
+   ],
+  //  entryComponents: [
+  //    DialogComponent ]
+   
 })
 export class CompliantModuleModule { }

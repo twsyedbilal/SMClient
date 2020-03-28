@@ -10,7 +10,7 @@ export class AdmissionDto {
     uidNo:number;
     idNo:number;
     surName:Date;
-    studentsName:string;
+    studentsName :string;
 };
 
 export class ComplainttypesDto{
@@ -19,7 +19,8 @@ export class ComplainttypesDto{
     code: string;
 }
 export class ComplaintDto{
-    
+    name:string;
+    code:number;
     remark: string;
     id:number;
     admissionId:number;
@@ -34,9 +35,12 @@ export class TableData{
 }
 
 
-export class Master{
-    remark:string;
-    StudentName:string;
+export class Docter{
+    name:string;
+    code:string;
     id?:number;
    
 }
+
+
+

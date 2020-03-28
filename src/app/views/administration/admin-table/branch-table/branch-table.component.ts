@@ -35,7 +35,6 @@ export class BranchTableComponent implements OnInit {
     });
  
   }
-
   openDialog(id) {
     console.log(id);
     const scrollStrategy = this.overlay.scrollStrategies.reposition();

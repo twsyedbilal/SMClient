@@ -130,7 +130,6 @@ this.adminService.getAllCity(id)
   this.cityData=res.data;
   });
 } 
-
   getDropDownlistData(){
   this.adminService.getAllClassData().subscribe(res=>{this.classData=res.data;});
   this.adminService.getAllReligionData().subscribe(res=>{this.religionData=res.data;});

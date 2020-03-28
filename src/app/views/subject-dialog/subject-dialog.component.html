@@ -1,0 +1,86 @@
+<div class="mat-card">
+  <mat-toolbar color='primary'><span style="color:#fff">Update Subject Master</span></mat-toolbar>
+  <form [formGroup]='classForm' *ngIf='classForm !=null' #formDirective="ngForm"
+    (ngSubmit)='submit(classForm,formDirective)'>
+
+    <div fxLayout="column">
+      <div fxLayoutAlign="space-evenly center">
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          <input matInput formControlName='subjectName' placeholder="Class Name">
+          <mat-error *ngIf='classForm.get("subjectName").hasError("required")'>Class Name is<strong>Required</strong>
+          </mat-error>
+          <mat-error *ngIf='!classForm.get("subjectName").hasError("required")
+             && classForm.get("subjectName").hasError("pattern")'>
+            Class Name <strong>only Charecters allow</strong></mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput formControlName='subjectCode' placeholder=" subject Code">
+          <mat-error *ngIf='classForm.get("subjectCode").hasError("required")'>Class subjectCode is
+            <strong>Required</strong></mat-error>
+          <mat-error *ngIf='!classForm.get("subjectCode").hasError("required")
+             && classForm.get("subjectCode").hasError("pattern")'>
+            Class subjectCode <strong>only Numbers allow</strong></mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+    <div fxLayout="column">
+      <div fxLayoutAlign="space-evenly center">
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          <input matInput formControlName='semester' placeholder="semester">
+          <mat-error *ngIf='classForm.get("semester").hasError("required")'>semester is<strong>Required</strong>
+          </mat-error>
+          <mat-error *ngIf='!classForm.get("semester").hasError("required")
+             && classForm.get("semester").hasError("pattern")'>
+            semester <strong>only Charecters allow</strong></mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width formFieldAlign">
+          <input matInput formControlName='bookName' placeholder="bookName">
+          <mat-error *ngIf='classForm.get("bookName").hasError("required")'>book Name <strong>Required</strong>
+          </mat-error>
+          <mat-error *ngIf='!classForm.get("bookName").hasError("required")
+             && classForm.get("bookName").hasError("pattern")'>
+            bookName <strong>only Numbers allow</strong></mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="column">
+      <div fxLayoutAlign="space-evenly center">
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          
+          <mat-label>Subject Teacher(Incharge) Name</mat-label>
+          <mat-select formControlName='user'>
+            <mat-option *ngFor='let x of userdto' [value]='x.id'>
+              {{x.username}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" fxFlex='30'>
+          <ng-container matColumnDef="classs">
+            <th mat-header-cell *matHeaderCellDef> class-name </th>
+            <td mat-cell *matCellDef="let element"> {{ element.classs.id}} </td>
+          </ng-container>
+          <mat-label>Please Select Class</mat-label>
+          <mat-select formControlName='classs'>
+            <mat-option *ngFor='let x of classDto' [value]='x.id'>
+              {{x.className}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+   
+<div fxLayoutAlign="space-around center" class='btn'>
+  <button mat-raised-button type="submit" class="submit-btn" color="primary">
+    <span class='submit-title'>Submit</span></button>
+</div>
+  </form>
+</div>

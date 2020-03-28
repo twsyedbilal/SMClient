@@ -10,6 +10,7 @@ describe('BookTableComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ BookTableComponent ]
     })
+    
     .compileComponents();
   }));
 

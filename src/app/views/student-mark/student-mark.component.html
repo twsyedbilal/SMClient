@@ -1,0 +1,111 @@
+<mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+  <mat-tab label="Master">
+    <div class="mat-card">
+      <mat-toolbar color='primary'><span style="color:#fff">Student Mark</span> </mat-toolbar>
+      <form [formGroup]='StudentMarkForm' #formDirective="ngForm"
+        (ngSubmit)='submitForm(StudentMarkForm,formDirective)'>
+        
+        <div fxLayout="column">
+          <div fxLayoutAlign="space-evenly center">
+            <mat-form-field class="example-full-width " fxFlex='30'>
+              <mat-label>Class Name</mat-label>
+              <mat-select formControlName='classsId'>
+                <mat-option *ngFor='let x of classdto' [value]='x.id'>
+                  {{x.className}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+             <div *ngFor="let unit of slavedto">
+              <mat-checkbox [checked]="unit.checked" 
+              (change)="valueChange(slavedto,unit,$event)">
+                   {{ unit.studentsName }}
+              </mat-checkbox>                        
+            </div> 
+            <mat-form-field class="example-full-width " fxFlex='30'>
+              <mat-label>Exam Name</mat-label>
+              <mat-select formControlName='examId'>
+                <mat-option *ngFor='let x of examdto' [value]='x.id'>
+                  {{x.examName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div *ngFor="let unit of examData">
+              <mat-checkbox [checked]="unit.checked" 
+              (change)="valueChange(examData,unit,$event)">
+                   {{ unit.examName }}
+              </mat-checkbox>                        
+            </div>
+
+            </div>
+            </div>
+            <div fxLayout="column">
+              <div fxLayoutAlign="space-evenly center">
+            <mat-form-field class="example-full-width " fxFlex='30'>
+              <mat-label>Subject Name</mat-label>
+              <mat-select formControlName='subjectid'>
+                <mat-option *ngFor='let x of subjectdto' [value]='x.id'>
+                  {{x.subjectName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+</div>
+</div>
+
+
+      </form>
+    </div>
+
+    <mat-card>
+     <!--<mat-card>-->
+  <div class='table-card'>
+    <div style="width: 30%;float: right;">
+  </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="rollNo">
+        <th mat-header-cell *matHeaderCellDef> RollNo </th>
+        <td mat-cell *matCellDef="let element;let i=index">{{i+1}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="studentsName">
+        <th mat-header-cell *matHeaderCellDef> Student-Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.studentsName}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="mark">
+        <th mat-header-cell *matHeaderCellDef> Mark </th>
+        <td mat-cell *matCellDef="let element;let i=index"> 
+        <input type='text' placeholder=' Enter Marks' [(ngModel)]=marks[i]>  
+        </td>
+      </ng-container>
+  
+       
+      <ng-container matColumnDef="remark">
+        <th mat-header-cell *matHeaderCellDef> Remark </th>
+        <td mat-cell *matCellDef="let element"> {{element.remark}} 
+          <input type='text' placeholder=' Remark'>  
+        </td>
+
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+  <div fxLayoutAlign="space-around center" class='btn'>
+    <button mat-raised-button type="submit" fxFlex='30' class="submit-btn" color="primary">
+      <span class='submit-title'>Submit</span></button>
+  </div>
+  <!--</mat-card>-->
+    </mat-card>
+
+  </mat-tab>
+  <mat-tab label="Student Mark  List">
+    <div *ngIf='tableshow ==true'>
+      <app-student-list></app-student-list>
+    </div>
+  </mat-tab>
+</mat-tab-group>

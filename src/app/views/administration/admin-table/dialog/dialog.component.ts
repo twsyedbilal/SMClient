@@ -26,7 +26,7 @@ constructor(public dialogRef: MatDialogRef<DialogComponent>,
             private activerouter:ActivatedRoute,
             private service:AdministrationService) { }
 
-  ngOnInit() {
+ngOnInit() {
     console.log(this.data);
 
     if (this.data != null) {
@@ -124,11 +124,7 @@ loadForm(){
       name:[this.formData.name,[Validators.required,Validators.pattern(this.validation.onlyAlphabet)]],
       code:[this.formData.code,[Validators.required,Validators.pattern(this.validation.onlyNumber)]]
   });
-
   }
-
-
-
     updateForm(){
         let masterData=new Master();
         masterData.id=this.data.id;
@@ -156,7 +152,7 @@ loadForm(){
             this.service.postBook(masterData).subscribe(res => { this.response = res.code; console.log(this.response); });
             break;
   
-          case 'Religion':
+          case 'Religion' :
             console.log('religion')
             this.service.postReligion(masterData).subscribe(res => { this.response = res.code; console.log(this.response); });
             break;
